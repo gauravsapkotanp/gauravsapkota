@@ -5,10 +5,10 @@ export default function NavLink({ active = false, className = '', children, ...p
         <Link
             {...props}
             className={
-                ' flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 transition duration-150 ease-in-out focus:outline-none ' +
+                ' flex items-center px-1 pt-1 border-b-2 text-sm  font-medium leading-5 transition duration-150 ease-in-out focus:outline-none ' +
                 (active
-                    ? 'bg-gradient-to-r from-orange-500 to-orange-400 text-white  rounded-md shadow-md shadow-blue-200'
-                    : 'bg-white text-black') +
+                    ? 'bg-gradient-to-r from-orange-500 to-orange-400 py-4 text-white  rounded-md shadow-md shadow-blue-200'
+                    : 'bg-white text-black py-2') +
                 ' ' + className  
             }
         >

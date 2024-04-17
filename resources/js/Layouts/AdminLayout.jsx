@@ -36,7 +36,9 @@ export default function AdminLayout({  children  }) {
                             <span className="text-sm font-thin  ">Blogs</span>
                         </li>
                 </NavLink>
-                <NavLink>
+                <NavLink
+                 href={route('logout')}
+                >
                     <li className="text-xl font-medium  p-2  flex items-center gap-2 ">
                             
                             <span className="text-sm font-thin  ">LogOut</span>
