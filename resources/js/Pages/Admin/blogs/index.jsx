@@ -2,10 +2,12 @@ import React from 'react';
 import AdminLayout from '@/Layouts/AdminLayout';
 import { RiDeleteBin2Fill, RiEdit2Line } from "react-icons/ri";
 import DataTable from 'react-data-table-component';
-import {Link, router} from "@inertiajs/react";
+import {Link, router, usePage} from "@inertiajs/react";
 
 
 export default function Index({ blogs  }) {
+    const {flash} = usePage().props;
+    console.log(flash.message);
     const deleteBlog = async (id) => {
         if (window.confirm('Are you sure you want to delete this blog?')) {
             router.get(`/blogs/delete/${id}`);
@@ -65,6 +67,9 @@ export default function Index({ blogs  }) {
 
             <div className="pt-12 lg:pt-0 px-4 pb-36 bg-gradient-to-r from-orange-400 to-orange-500">
                 <h1 className="text-lg font-thin text-white pt-12 lg:pl-4 uppercase">Blogs</h1>
+                {flash.message && (
+          <div class="alert">{flash.message}</div>
+        )}
                 <div className="mt-6 sm:flex gap-4 justify-end">
                     <div className="mt-4">
                     < Link href={route('blogs.create')} className="bg-gray-300 uppercase text-primary hover:bg-transparent border-2 hover:border-gray-300 hover:text-gray-200 duration-1000 text-[12px] sm:text-sm font-semibold py-2 px-4 rounded-full">Add Blog</Link>

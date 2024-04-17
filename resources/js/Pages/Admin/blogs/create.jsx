@@ -3,6 +3,7 @@ import { router } from '@inertiajs/react'
 import React, { useState } from 'react'
 
 const Create = () => {
+    
   const [values, setValues] = useState({
     title: "",
     date: "",

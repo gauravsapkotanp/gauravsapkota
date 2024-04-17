@@ -58,10 +58,8 @@ class BlogController extends Controller
 
         Blog::create($data);
 
-        return redirect()->route('blogs.index');
+        return redirect(route('blogs.index'))->with('message', 'Blog Created Successfully');
 
-        // Blog::create($request);
-        // return redirect(route('blog.index'))->with('success', 'Blog Created Successfully');
 
 
     }
@@ -113,7 +111,7 @@ class BlogController extends Controller
             $data['photopath'] = $image;
         }
         $blog->update($data);
-        return redirect(route('blogs.index'))->with('success', 'Blog Updated Successfully');
+        return redirect(route('blogs.index'))->with('message', 'Blog Updated Successfully');
     }
 
     /**
