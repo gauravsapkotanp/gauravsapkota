@@ -1,7 +1,13 @@
 import NavLink from '@/Components/NavLink';
 import { RiDashboardFill , RiCloseCircleFill } from 'react-icons/ri';
+import { router } from '@inertiajs/react';
+
 
 export default function AdminLayout({  children  }) {
+  function handleLogout(e) {
+    e.preventDefault()
+    router.post('logout')
+  }
     
     return (
         <div className="bg-gray-200  min-h-screen pb-4">
@@ -37,11 +43,11 @@ export default function AdminLayout({  children  }) {
                         </li>
                 </NavLink>
                 <NavLink
-                 href={route('logout')}
+                 onClick={handleLogout}
                 >
                     <li className="text-xl font-medium  p-2  flex items-center gap-2 ">
                             
-                            <span className="text-sm font-thin  ">LogOut</span>
+                            <span className="text-sm font-thin">Log Out</span>
                         </li>
                 </NavLink>
  
