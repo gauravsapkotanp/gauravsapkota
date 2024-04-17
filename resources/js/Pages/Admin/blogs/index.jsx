@@ -26,7 +26,8 @@ export default function Index({ blogs  }) {
         },
         {
             name: 'Photopath',
-            cell: row => <img className="w-20 mx-auto" src={blogs.title} alt=""/>,
+            cell: row => <img className="w-36 mx-auto" src={`/img/blogs/${row.photopath}`} alt=""/>
+
         },
         {
             name: 'Title',

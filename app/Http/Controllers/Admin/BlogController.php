@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Inertia\Inertia;
 
 class BlogController extends Controller
@@ -39,28 +40,29 @@ class BlogController extends Controller
             'title' => 'required',
             'date' => 'required',
             'description' => 'required',
+            'photopath' => 'required|image',
         ]);
 
+        //file name with extentsion
+        $filenameWithExt_image = $request->file('photopath')->getClientOriginalName();
+        //only file name
+        $filename_image = pathinfo($filenameWithExt_image, PATHINFO_FILENAME);
+        //only extension
+        $extension_image = $request->file('photopath')->getClientOriginalExtension();
+        //file name to store
+        $image = $filename_image . '_' . time() . '.' . $extension_image;
+
+        //Move file to desired location
+        $path = $request->file('photopath')->move('img/blogs/', $image);
+        $data['photopath'] = $image;
+        
         Blog::create($data);
 
         return redirect()->route('blogs.index');
+ 
+                // Blog::create($request);
+                // return redirect(route('blog.index'))->with('success', 'Blog Created Successfully');
 
-
-        // //file name with extentsion
-        // $filenameWithExt_image = $request->file('photopath')->getClientOriginalName();
-        // //only file name
-        // $filename_image = pathinfo($filenameWithExt_image, PATHINFO_FILENAME);
-        // //only extension
-        // $extension_image = $request->file('photopath')->getClientOriginalExtension();
-        // //file name to store
-        // $image = $filename_image . '_' . time() . '.' . $extension_image;
-
-        // //Move file to desired location
-        // $path = $request->file('photopath')->move('img/blogs/', $image);
-        // $data['photopath'] = $image;
-
-        // Blog::create($request);
-        // return redirect(route('blog.index'))->with('success', 'Blog Created Successfully');
 
     }
 
@@ -92,24 +94,24 @@ class BlogController extends Controller
             'title' => 'required',
             'date' => 'required',
             'description' => 'required',
-            // 'photopath' => 'nullable',
+            'photopath' => 'nullable',
         ]);
 
         $blog = Blog::find($id);
-        // if ($request->hasFile('photopath')) {
-        //     //file name with extentsion
-        //     $filenameWithExt_image = $request->file('photopath')->getClientOriginalName();
-        //     //only file name
-        //     $filename_image = pathinfo($filenameWithExt_image, PATHINFO_FILENAME);
-        //     //only extension
-        //     $extension_image = $request->file('photopath')->getClientOriginalExtension();
-        //     //file name to store
-        //     $image = $filename_image . '_' . time() . '.' . $extension_image;
-        //     //Move file to desired location
-        //     $path = $request->file('photopath')->move('img/blogs/', $image);
-        //     File::delete(public_path("img/blogs/" . $blog->photopath));
-        //     $data['photopath'] = $image;
-        // }
+        if ($request->hasFile('photopath')) {
+            //file name with extentsion
+            $filenameWithExt_image = $request->file('photopath')->getClientOriginalName();
+            //only file name
+            $filename_image = pathinfo($filenameWithExt_image, PATHINFO_FILENAME);
+            //only extension
+            $extension_image = $request->file('photopath')->getClientOriginalExtension();
+            //file name to store
+            $image = $filename_image . '_' . time() . '.' . $extension_image;
+            //Move file to desired location
+            $path = $request->file('photopath')->move('img/blogs/', $image);
+            File::delete(public_path("img/blogs/" . $blog->photopath));
+            $data['photopath'] = $image;
+        }
         $blog->update($data);
         return redirect(route('blogs.index'))->with('success', 'Blog Updated Successfully');
     }
