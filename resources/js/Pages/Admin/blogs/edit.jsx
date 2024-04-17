@@ -2,26 +2,21 @@ import AdminLayout from '@/Layouts/AdminLayout'
 import { router } from '@inertiajs/react'
 import React, { useState } from 'react'
 
-const Create = () => {
+const Edit = ({ blog  }) => {
 const [values, setValues,processing] = useState({
-    title: "",
-    date: "",
-    description: "",
-    photopath: "",
+    title: blog.title || "",
+    date: blog.date || "",
+    description: blog.description || "",
+    photopath:  blog.photopath || "",
   })
 
-    // const storeBlogs = (e) => {
-    //     e.preventDefault();
-    //     console.log(data);
-    //     router.post('/blogs',data);
-         
-    // }
+     
 
-    // const handleFileChange = (e) => {
-    //     const file = e.target.files[0];
-    //     setSelectedFile(file);
-    //     setData('photoPath', file.name); // Set the file name to photoPath
-    // }
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        setSelectedFile(file);
+        setData('photoPath', file.name); // Set the file name to photoPath
+    }
 
 
     function handleChange(e) {
@@ -35,7 +30,8 @@ const [values, setValues,processing] = useState({
 
   function handleSubmit(e) {
     e.preventDefault()
-    router.post('/blogs', values)
+    router.put(`/blogs/update/${blog.id}`, values)
+    console.log(values);
   }
 
     return (
@@ -71,7 +67,7 @@ const [values, setValues,processing] = useState({
                                 )}
                             </div>
                         </div> */}
-                        <button type="submit" disabled={processing} className={`${processing ? 'opacity-50 cursor-not-allowed' : ''} bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline`}>Submit</button>
+                        <button type="submit" disabled={processing} className={`${processing ? 'opacity-50 cursor-not-allowed' : ''} bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline`}>Update</button>
                     </form>
                 </div>
             </AdminLayout>
@@ -79,4 +75,4 @@ const [values, setValues,processing] = useState({
     )
 }
 
-export default Create;
+export default Edit;

@@ -77,7 +77,8 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        return inertia("Admin/blogs/edit", [
+        
+        return Inertia::render('Admin/blogs/edit', [
             'blog' => $blog,
         ]);
     }
@@ -110,7 +111,7 @@ class BlogController extends Controller
         //     $data['photopath'] = $image;
         // }
         $blog->update($data);
-        return redirect(route('blog.index'))->with('success', 'Blog Updated Successfully');
+        return redirect(route('blogs.index'))->with('success', 'Blog Updated Successfully');
     }
 
     /**
@@ -121,11 +122,12 @@ class BlogController extends Controller
         //
     }
 
-    // public function delete(Request $request)
-    // {
-    //     $blog = Blog::find($request->input('dataid'));
-    //     File::delete(public_path("img/blogs/" . $blog->photopath));
-    //     $blog->delete();
-    //     return back()->with('success', 'Blog Deleted Successfully');
-    // }
+    public function delete(Blog $blog)
+    {         
+        $blog->delete();
+        return back()->with('success', 'Blog Deleted Successfully');
+
+
+         
+    }
 }

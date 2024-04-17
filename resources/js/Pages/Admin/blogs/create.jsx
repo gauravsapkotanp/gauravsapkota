@@ -10,18 +10,7 @@ const [values, setValues,processing] = useState({
     photopath: "",
   })
 
-    // const storeBlogs = (e) => {
-    //     e.preventDefault();
-    //     console.log(data);
-    //     router.post('/blogs',data);
-         
-    // }
-
-    // const handleFileChange = (e) => {
-    //     const file = e.target.files[0];
-    //     setSelectedFile(file);
-    //     setData('photoPath', file.name); // Set the file name to photoPath
-    // }
+     
 
 
     function handleChange(e) {

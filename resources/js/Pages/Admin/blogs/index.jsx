@@ -2,13 +2,13 @@ import React from 'react';
 import AdminLayout from '@/Layouts/AdminLayout';
 import { RiDeleteBin2Fill, RiEdit2Line } from "react-icons/ri";
 import DataTable from 'react-data-table-component';
-import {Link} from "@inertiajs/react";
+import {Link, router} from "@inertiajs/react";
 
 
 export default function Index({ blogs  }) {
     const deleteBlog = async (id) => {
         if (window.confirm('Are you sure you want to delete this blog?')) {
-            Inertia.delete(`/blogs/${id}`);
+            router.get(`/blogs/delete/${id}`);
         }
     };
 

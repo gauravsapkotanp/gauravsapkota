@@ -16,7 +16,7 @@ export default function AdminLayout({  children  }) {
             </div>
 
             <div className="mx-4 mt-4 border-b pb-8 dark:bg-white py-1 px-4 dark:rounded-xl">
-                <img className="w-64 mx-auto rounded-full" src="{asset('images/user.jpg') }" alt=""/>
+                <img className="w-64 mx-auto rounded-full" src="/images/user.jpg" alt=""/>
             </div>
             <div className="mt-4 mx-4">
                 <ul>    
@@ -29,7 +29,7 @@ export default function AdminLayout({  children  }) {
                 </NavLink>
                 <NavLink
                     href={route("blogs.index")}
-                    active={route().current("blogs.index")}                
+                    active={route().current("blogs.*")}                
                 >
                     <li className="text-xl font-medium  p-2  flex items-center gap-2 ">
                            <RiDashboardFill className="text-2xl" />
