@@ -44,11 +44,11 @@ export default function Index({ blogs  }) {
             name: 'Action',
             cell: row => (
                 <div className="flex items-center justify-center gap-1">
-                    <a href={`route('blog.edit', ${row.id})`} title="Edit">
+                    <Link  href={route('blogs.edit', row.id)} title="Edit">
                         <div className="bg-[#1650d0] text-white w-9 h-8 flex items-center justify-center hover:bg-transparent border-2 hover:border-[#1650d0] hover:text-[#1650d0] duration-1000  rounded-md shadow-md shadow-blue-200 ">
                             <RiEdit2Line />
                         </div>
-                    </a>
+                    </Link>
                     <button title="Delete" className="w-9 h-8 flex items-center justify-center rounded-md  text-white bg-[#b21f31] hover:bg-transparent border-2  hover:text-[#b21f31] shadow-md shadow-red-200 hover:border-[#b21f31] duration-1000 " onClick={() => deleteBlog(row.id)}>
                         <RiDeleteBin2Fill />
                     </button>

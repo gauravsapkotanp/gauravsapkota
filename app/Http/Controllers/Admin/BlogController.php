@@ -77,39 +77,41 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        return view('admin.blog.edit', compact('blog'));
+        return inertia("Admin/blogs/edit", [
+            'blog' => $blog,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    // public function update(UpdateBlogRequest $request, Blog $blog, $id)
-    // {
-    //     $data = $request->validate([
-    //         'title' => 'required',
-    //         'date' => 'required',
-    //         'description' => 'required',
-    //         'photopath' => 'nullable',
-    //     ]);
+    public function update(Request $request, $id)
+    {
+        $data = $request->validate([
+            'title' => 'required',
+            'date' => 'required',
+            'description' => 'required',
+            // 'photopath' => 'nullable',
+        ]);
 
-    //     $blog = Blog::find($id);
-    //     if ($request->hasFile('photopath')) {
-    //         //file name with extentsion
-    //         $filenameWithExt_image = $request->file('photopath')->getClientOriginalName();
-    //         //only file name
-    //         $filename_image = pathinfo($filenameWithExt_image, PATHINFO_FILENAME);
-    //         //only extension
-    //         $extension_image = $request->file('photopath')->getClientOriginalExtension();
-    //         //file name to store
-    //         $image = $filename_image . '_' . time() . '.' . $extension_image;
-    //         //Move file to desired location
-    //         $path = $request->file('photopath')->move('img/blogs/', $image);
-    //         File::delete(public_path("img/blogs/" . $blog->photopath));
-    //         $data['photopath'] = $image;
-    //     }
-    //     $blog->update($data);
-    //     return redirect(route('blog.index'))->with('success', 'Blog Updated Successfully');
-    // }
+        $blog = Blog::find($id);
+        // if ($request->hasFile('photopath')) {
+        //     //file name with extentsion
+        //     $filenameWithExt_image = $request->file('photopath')->getClientOriginalName();
+        //     //only file name
+        //     $filename_image = pathinfo($filenameWithExt_image, PATHINFO_FILENAME);
+        //     //only extension
+        //     $extension_image = $request->file('photopath')->getClientOriginalExtension();
+        //     //file name to store
+        //     $image = $filename_image . '_' . time() . '.' . $extension_image;
+        //     //Move file to desired location
+        //     $path = $request->file('photopath')->move('img/blogs/', $image);
+        //     File::delete(public_path("img/blogs/" . $blog->photopath));
+        //     $data['photopath'] = $image;
+        // }
+        $blog->update($data);
+        return redirect(route('blog.index'))->with('success', 'Blog Updated Successfully');
+    }
 
     /**
      * Remove the specified resource from storage.
