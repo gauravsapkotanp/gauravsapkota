@@ -17,11 +17,8 @@ Route::get('/', function () {
 
 
 
-Route::middleware(['auth','verified'])->group(function () {
-    Route::get('/dashboard',fn()=>Inertia::render('Dashboard'))->name('dashboard');
-    
-    
-    
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -31,9 +28,8 @@ Route::middleware('auth')->group(function () {
 
     //blogs
     Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
-Route::get('/blogs/create', [BlogController::class, 'create'])->name('blogs.create');
-Route::post('/blogs', [BlogController::class, 'store'])->name('blogs.store');
-   
+    Route::get('/blogs/create', [BlogController::class, 'create'])->name('blogs.create');
+    Route::post('/blogs/store', [BlogController::class, 'store'])->name('blogs.store');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
