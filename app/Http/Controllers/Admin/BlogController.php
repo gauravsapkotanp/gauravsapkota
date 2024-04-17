@@ -55,13 +55,13 @@ class BlogController extends Controller
         //Move file to desired location
         $path = $request->file('photopath')->move('img/blogs/', $image);
         $data['photopath'] = $image;
-        
+
         Blog::create($data);
 
         return redirect()->route('blogs.index');
- 
-                // Blog::create($request);
-                // return redirect(route('blog.index'))->with('success', 'Blog Created Successfully');
+
+        // Blog::create($request);
+        // return redirect(route('blog.index'))->with('success', 'Blog Created Successfully');
 
 
     }
@@ -79,7 +79,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        
+
         return Inertia::render('Admin/blogs/edit', [
             'blog' => $blog,
         ]);
@@ -94,7 +94,7 @@ class BlogController extends Controller
             'title' => 'required',
             'date' => 'required',
             'description' => 'required',
-            'photopath' => 'nullable|image',
+            'photopath' => 'nullable',
         ]);
 
         $blog = Blog::find($id);
@@ -125,11 +125,8 @@ class BlogController extends Controller
     }
 
     public function delete(Blog $blog)
-    {         
+    {
         $blog->delete();
         return back()->with('success', 'Blog Deleted Successfully');
-
-
-         
     }
 }

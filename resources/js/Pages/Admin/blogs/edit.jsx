@@ -34,7 +34,7 @@ const Edit = ({ blog }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    router.put(`/blogs/update/${blog.id}`, values);
+    router.post(`/blogs/update/${blog.id}`, values);
   }
 
   return (
@@ -59,7 +59,7 @@ const Edit = ({ blog }) => {
             </div>
             <div className="mb-4">
             <label htmlFor="photopath" className="  text-white hover:bg-transparent border-2 bg-orange-500 hover:text-red-500 hover:border-primary duration-1000 hover:text-primary py-2 px-4  rounded-lg cursor-pointer">Choose New Image</label>
-            <input  hidden  type="file"   id="photopath" accept="image/*" onChange={handleImageChange} required  />
+            <input  hidden  type="file"   id="photopath" accept="image/*" onChange={handleImageChange}  />
             </div>
             {selectedImage? (
               <img src={URL.createObjectURL(selectedImage)} alt="New" className="mb-4 rounded-xl h-full" style={{ maxWidth: "400px" }} />
