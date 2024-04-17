@@ -94,7 +94,7 @@ class BlogController extends Controller
             'title' => 'required',
             'date' => 'required',
             'description' => 'required',
-            'photopath' => 'nullable',
+            'photopath' => 'nullable|image',
         ]);
 
         $blog = Blog::find($id);
