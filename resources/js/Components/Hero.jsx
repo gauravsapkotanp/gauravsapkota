@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { styles } from '../styles';
 import { shaq, bwmap, worldmap } from '../../assets';
 
 const Hero = () => {
@@ -24,7 +23,7 @@ const Hero = () => {
         sm:bg-hero bg-hero-mobile overflow-hidden">
         <div
           className={`absolute inset-0 sm:top-[250px] top-[150px] 
-          lg:top-[150px] xl:top-[250px] ${styles.paddingX} 
+          lg:top-[150px] xl:top-[250px] sm:px-16 px-6 
           max-w-7xl mx-auto flex flex-row items-start
           justify-between gap-3`}>
           <div className="flex flex-col justify-center items-center mt-5 ml-3">
@@ -34,16 +33,16 @@ const Hero = () => {
 
           <div>
             <h1
-              className={`${styles.heroHeadText} text-eerieBlack font-poppins uppercase`}>
+              className={`font-black text-eerieBlack lg:text-[80px] sm:text-[60px] xs:text-[50px] text-[40px] lg:leading-[90px] mt-2 font-poppins uppercase`}>
               Hi, I'm{' '}
               <span
                 className="sm:text-battleGray sm:text-[90px] 
                 text-eerieBlack text-[50px] font-mova
                 font-extrabold uppercase">
-                Shaquille
+                Gaurav SAPKOTA
               </span>
             </h1>
-            <p className={`${styles.heroSubText} mt-2 text-eerieBlack`}>
+            <p className={`text-eerieBlack font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px] mt-2  `}>
               Lorem ipsum dolor sit amet. <br className="sm:block hidden" />
               consectetur adipisicing elit deleniti, voluptas.
             </p>
@@ -78,7 +77,7 @@ const Hero = () => {
           </a>
         </div>
 
-        {/* Your image comes here. Feel free to remove image if you don't plan to have one.*/}
+        
         <div>
           <img
             className="absolute bottom-0 ml-[50vw] 

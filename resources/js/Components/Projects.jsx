@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SectionWrapper } from '../hoc';
-import { styles } from '../styles';
 import { github, pineapple, pineappleHover } from '../../assets';
 import { projects } from '../Components/index';
 import { fadeIn, textVariant, staggerContainer } from '../utils/motion';
@@ -116,8 +115,8 @@ const Projects = () => {
   return (
     <div className="-mt-[6rem]">
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>Case Studies</p>
-        <h2 className={`${styles.sectionHeadTextLight}`}>Projects.</h2>
+        <p className={`sm:text-[18px] text-[16px] text-taupe uppercase tracking-wider font-semibold font-poppins `}>Case Studies</p>
+        <h2 className={`text-timberWolf font-black md:text-[60px] sm:text-[48px] xs:text-[40px] text-[30px] font-poppins`}>Projects.</h2>
       </motion.div>
 
       <div className="w-full flex">
@@ -137,7 +136,7 @@ const Projects = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: false, amount: 0.25 }}
-        className={`${styles.innerWidth} mx-auto flex flex-col`}>
+        className={`2xl:max-w-[1280px] w-full mx-auto flex flex-col`}>
         <div className="mt-[50px] flex lg:flex-row flex-col min-h-[70vh] gap-5">
           {projects.map((project, index) => (
             <ProjectCard

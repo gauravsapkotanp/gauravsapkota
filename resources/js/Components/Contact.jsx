@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import { styles } from '../styles';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
 import { send, sendHover } from '../../assets';
@@ -66,8 +65,8 @@ const Contact = () => {
       <motion.div
         variants={slideIn('left', 'tween', 0.2, 1)}
         className="flex-[0.75] bg-jet p-8 rounded-2xl">
-        <p className={styles.sectionSubText}>Get in touch</p>
-        <h3 className={styles.sectionHeadTextLight}>Contact.</h3>
+        <p className={`sm:text-[18px] text-[16px] text-taupe uppercase tracking-wider font-semibold font-poppins`}>Get in touch</p>
+        <h3 className={ `text-timberWolf font-black md:text-[60px] sm:text-[48px] xs:text-[40px] text-[30px] font-poppins`}>Contact.</h3>
 
         <form
           ref={formRef}

@@ -31,6 +31,10 @@ import {
 
 export const navLinks = [
   {
+    id: 'home',
+    title: 'Home',
+  },
+  {
     id: 'about',
     title: 'About',
   },
@@ -54,11 +58,11 @@ const services = [
     icon: backend,
   },
   {
-    title: 'UI/UX Design',
+    title: 'Flutter Developer',
     icon: ux,
   },
   {
-    title: 'Software Prototyping',
+    title: 'React Developer',
     icon: prototyping,
   },
 ];

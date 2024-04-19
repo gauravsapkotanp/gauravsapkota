@@ -4,7 +4,6 @@ import {
 } from 'react-vertical-timeline-component';
 import { motion } from 'framer-motion';
 import 'react-vertical-timeline-component/style.min.css';
-import { styles } from '../styles';
 import { experiences } from '../Components/index';
 import { SectionWrapper } from '../hoc';
 import { download, downloadHover, resume } from '../../assets';
@@ -55,10 +54,10 @@ const Experience = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} sm:pl-16 pl-[2rem]`}>
+        <p className={`sm:text-[18px] text-[16px] text-taupe uppercase tracking-wider font-semibold font-poppins sm:pl-16 pl-[2rem]`}>
           What I've done so far
         </p>
-        <h2 className={`${styles.sectionHeadText} sm:pl-16 pl-[2rem]`}>
+        <h2 className={`text-eerieBlack font-black md:text-[60px] sm:text-[48px] xs:text-[40px] text-[30px] font-poppins sm:pl-16 pl-[2rem]`}>
           Work Experience.
         </h2>
       </motion.div>

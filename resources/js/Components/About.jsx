@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { styles } from '../styles';
 import { services } from '../Components/index';
 import { fadeIn, textVariant } from './utils/motion';
 import { SectionWrapper } from '../hoc';
@@ -30,8 +29,8 @@ const About = () => {
   return (
     <div className="-mt-[6rem]">
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Introduction</p>
-        <h2 className={styles.sectionHeadText}>Overview.</h2>
+        <p className={`sm:text-[18px] text-[16px] text-taupe uppercase tracking-wider font-semibold font-poppins`}>Introduction</p>
+        <h2 className={`text-eerieBlack font-black md:text-[60px] sm:text-[48px] xs:text-[40px] text-[30px] font-poppins`}>Overview.</h2>
       </motion.div>
 
       <motion.p
