@@ -1,12 +1,16 @@
 import NavLink from "@/Components/NavLink";
 import { RiDashboardFill, RiCloseCircleFill } from "react-icons/ri";
 import { router } from "@inertiajs/react";
+import { ToastContainer } from 'react-toastify';
+
 
 export default function AdminLayout({ children }) {
     function handleLogout(e) {
         e.preventDefault();
         router.post("logout");
     }
+
+    
 
     return (
         <div className="bg-gray-200  min-h-screen pb-4">
@@ -60,6 +64,8 @@ export default function AdminLayout({ children }) {
             <div className="lg:pl-60">
                 <div>{children}</div>
             </div>
+            <ToastContainer   />
+
         </div>
     );
 }

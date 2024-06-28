@@ -125,6 +125,6 @@ class BlogController extends Controller
     public function delete(Blog $blog)
     {
         $blog->delete();
-        return back()->with('success', 'Blog Deleted Successfully');
+        return back()->with('message', 'Blog Deleted Successfully');
     }
 }
