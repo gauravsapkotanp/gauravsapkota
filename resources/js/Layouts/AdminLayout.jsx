@@ -1,28 +1,40 @@
+import React, { useState, useEffect } from 'react';
 import NavLink from "@/Components/NavLink";
-import { RiDashboardFill, RiCloseCircleFill } from "react-icons/ri";
+import { RiDashboardFill, RiCloseCircleFill, RiMenuFill } from "react-icons/ri";
 import { router } from "@inertiajs/react";
 import { ToastContainer } from 'react-toastify';
-
+import { route } from 'ziggy-js';
 
 export default function AdminLayout({ children }) {
+    const [isCollapsed, setIsCollapsed] = useState(() => {
+        const savedState = localStorage.getItem('isCollapsed');
+        return savedState === 'true';
+    });
+
+    useEffect(() => {
+        localStorage.setItem('isCollapsed', isCollapsed);
+    }, [isCollapsed]);
+
     function handleLogout(e) {
         e.preventDefault();
         router.post("logout");
     }
 
-    
-
     return (
-        <div className="bg-gray-200  min-h-screen pb-4">
-            <div className="fixed left-0 top-0 bottom-0 w-60 z-50 bg-white  shadow-lg shadow-[#213a57] overflow-auto hide-bar hidden lg:block">
-                <div className="h-6 w-6 bg-gray-200 invisible text-blue-500 rounded-full flex items-center justify-center float-right mt-2 lg:hidden">
-                    <i className="ri-close-line text-xl"></i>
-                    <RiCloseCircleFill className="text-2xl" />
+        <div className="bg-gray-200 min-h-screen pb-4">
+            <div className={`fixed left-0 top-0 bottom-0 ${isCollapsed ? 'w-20' : 'w-60'} z-50 bg-white shadow-lg shadow-[#213a57] overflow-auto transition-all duration-300`}>
+                <div className="h-6 w-6 bg-gray-200 text-blue-500 rounded-full flex items-center justify-center float-right mt-2 lg:hidden">
+                    {!isCollapsed && <RiCloseCircleFill className="text-2xl text-red-500" />}
                 </div>
-
-                <div className="mx-4 mt-4 border-b pb-8 dark:bg-white py-1 px-4 dark:rounded-xl">
+                <button
+                    onClick={() => setIsCollapsed(!isCollapsed)}
+                    className="bg-orange-500 float-right px-4 py-3 pb-4 m-3 rounded-xl text-white"
+                >
+                    <RiMenuFill className="text-2xl text-white" />
+                </button>
+                <div className={`mx-4 mt-4 border-b pb-8 ${isCollapsed ? 'mx-2 mt-2 border-b pb-3' : 'mx-4 mt-4 border-b pb-8'}`}>
                     <img
-                        className="w-64 mx-auto rounded-full"
+                        className={`w-64 mx-auto rounded-full ${isCollapsed ? 'w-36' : 'w-40'}`}
                         src="/images/user.jpg"
                         alt=""
                     />
@@ -32,11 +44,12 @@ export default function AdminLayout({ children }) {
                         <NavLink
                             href={route("dashboard")}
                             active={route().current("dashboard")}
+                            activeClass="bg-gradient-to-r from-orange-500 to-orange-400 text-white rounded-md shadow-md shadow-blue-200"
                         >
-                            <li className="text-xl font-medium  p-2  flex items-center gap-2 ">
+                            <li className="text-xl font-medium p-2 flex items-center gap-2">
                                 <RiDashboardFill className="text-2xl" />
-                                <span className="text-sm font-thin  ">
-                                  Dashboard
+                                <span className={`text-sm ${isCollapsed ? 'hidden' : 'block'}`}>
+                                    Dashboard
                                 </span>
                             </li>
                         </NavLink>
@@ -44,16 +57,16 @@ export default function AdminLayout({ children }) {
                             href={route("blogs.index")}
                             active={route().current("blogs.*")}
                         >
-                            <li className="text-xl font-medium  p-2  flex items-center gap-2 ">
+                            <li className="text-xl font-medium p-2 flex items-center gap-2">
                                 <RiDashboardFill className="text-2xl" />
-                                <span className="text-sm font-thin  ">
+                                <span className={`text-sm ${isCollapsed ? 'hidden' : 'block'}`}>
                                     Blogs
                                 </span>
                             </li>
                         </NavLink>
                         <NavLink onClick={handleLogout}>
-                            <li className="text-xl font-medium  p-2  flex items-center gap-2 ">
-                                <span className="text-sm font-thin">
+                            <li className="text-xl font-medium p-2 flex items-center gap-2">
+                                <span className={`text-sm ${isCollapsed ? 'hidden' : 'block'}`}>
                                     Log Out
                                 </span>
                             </li>
@@ -61,11 +74,10 @@ export default function AdminLayout({ children }) {
                     </ul>
                 </div>
             </div>
-            <div className="lg:pl-60">
+            <div className={`${isCollapsed ? 'pl-20' : 'pl-60'} transition-all duration-300`}>
                 <div>{children}</div>
             </div>
-            <ToastContainer   />
-
+            <ToastContainer />
         </div>
     );
 }

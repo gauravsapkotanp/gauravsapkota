@@ -10,10 +10,10 @@ export default function NavLink({
         <Link
             {...props}
             className={
-                " flex items-center px-1 pt-1 border-b-2 text-sm  font-medium leading-5 transition duration-150 ease-in-out focus:outline-none " +
+                " text-xl font-medium  p-2 mt-4  flex items-center text-gray-600   gap-2   hover:bg-gradient-to-r hover:from-orange-400 hover:to-orange-500  hover:text-white  hover:rounded-md hover:shadow-md hover:shadow-blue-200" +
                 (active
-                    ? "bg-gradient-to-r from-orange-500 to-orange-400 p-2 text-white  rounded-md shadow-md shadow-blue-200"
-                    : "text-xl font-medium  p-2  flex items-center  gap-2   hover:bg-gradient-to-r hover:from-orange-400 hover:to-orange-500  hover:text-white  hover:rounded-md hover:shadow-md hover:shadow-blue-200") +
+                    ? " bg-gradient-to-r from-orange-500 to-orange-400 text-white  rounded-md shadow-md shadow-blue-200"
+                    : "   ") +
                 " " +
                 className
             }

@@ -7,6 +7,8 @@ import { RiDeleteBin2Fill, RiEdit2Line } from "react-icons/ri";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ConfirmationModal from '@/Components/Auth/ConfirmationModal';
+import { route } from 'ziggy-js';
+
 
 
 const Index = ({ blogs }) => {
@@ -63,7 +65,7 @@ const Index = ({ blogs }) => {
             <button key="delete" title="Delete" className="w-9 h-8 flex items-center justify-center rounded-md text-white bg-[#b21f31] hover:bg-transparent border-2 hover:text-[#b21f31] shadow-md shadow-red-200 hover:border-[#b21f31] duration-1000" onClick={() => openModal(item.id)}>
                 <RiDeleteBin2Fill />
             </button>
-        )
+        ),
     ];
     
 

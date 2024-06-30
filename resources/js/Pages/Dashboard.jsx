@@ -10,7 +10,7 @@ export default function Dashboard({   }) {
              
 
             <div className="pt-12 lg:pt-0 px-4 bg-gradient-to-r from-orange-400 to-orange-500 pb-40 ">
-        <h1 className="text-lg font-thin text-white  pt-12 pl-4">DASHBOARD</h1>
+        <h1 className="text-lg  text-white pt-12 lg:pl-4 uppercase">DASHBOARD</h1>
     </div>
 
     <div className="grid lg:grid-cols-4 md:grid-cols-2 -mt-24">
