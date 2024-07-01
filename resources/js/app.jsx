@@ -6,10 +6,10 @@ import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
  
 
-const appName = import.meta.env.VITE_APP_NAME || 'Gauristra Blog';
+const appName =  'Streamly';
 
 createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
+    title: (title) => ` ${appName}`,
     resolve: (name) => resolvePageComponent(`./Pages/${name}.jsx`, import.meta.glob('./Pages/**/*.jsx')),
     setup({ el, App, props }) {
         

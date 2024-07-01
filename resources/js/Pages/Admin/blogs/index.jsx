@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ConfirmationModal from '@/Components/Auth/ConfirmationModal';
 import { route } from 'ziggy-js';
-
+ 
 
 
 const Index = ({ blogs }) => {
