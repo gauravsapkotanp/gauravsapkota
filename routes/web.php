@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendController::class, "main"])->name('main');
 Route::get('/getstarted', [FrontendController::class, "getstarted"])->name('getstarted');
+Route::get('/signup', [FrontendController::class, "signup"])->name('signup');
+Route::get('/signupstep2', [FrontendController::class, "signupstep2"])->name('signupstep2');
 // Route::get('/', [FrontendController::class, "home"])->name('home');
 Route::get('/blog/{id}', [FrontendController::class, 'singleBlog'])->name('singleBlog.show');
 Route::get('/project/{id}', [FrontendController::class, 'singleProject'])->name('singleProject.show');

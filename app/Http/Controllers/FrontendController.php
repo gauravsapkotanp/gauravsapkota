@@ -66,6 +66,20 @@ class FrontendController extends Controller
         return Inertia::render('MainPage', [
         ]);
     }
+    
+     public function signup()
+    {
+        $this->visits();
+        return Inertia::render('SignUp', [
+        ]);
+    }
+
+     public function signupstep2()
+    {
+        $this->visits();
+        return Inertia::render('SignUpStep2', [
+        ]);
+    }
 
 
       

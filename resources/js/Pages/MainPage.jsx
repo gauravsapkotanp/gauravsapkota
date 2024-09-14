@@ -51,9 +51,11 @@ const MainPage = () => {
                                 className="bg-gray-700 bg-opacity-35 w-96  text-white ring-0 focus:ring-0  focus:outline-none placeholder-gray-500 placeholder:text-start px-3 py-2 rounded-lg"
                             />
 
-                            <button className="bg-sky-500 px-8 py-3 rounded-lg hover:bg-sky-600 transition-all ease-in-out duration-300 delay-75 text-white font-bold">
-                                Get Started
-                            </button>
+                            <Link href={route("signup")}>
+                                <button className="bg-sky-500 px-8 py-3 rounded-lg hover:bg-sky-600 transition-all ease-in-out duration-300 delay-75 text-white font-bold">
+                                    Get Started
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
