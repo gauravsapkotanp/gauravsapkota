@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\KhaltiController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,11 +18,15 @@ Route::get('/signup/step2', [FrontendController::class, "signupstep2"])->name('s
 Route::get('/signup/step3', [FrontendController::class, "signupstep3"])->name('signupstep3');
 Route::get('/signup/planform', [FrontendController::class, "planform"])->name('planform');
 Route::get('/choosepaymentmethod', [FrontendController::class, "choosepayment"])->name('choosepayment');
-// Route::get('/', [FrontendController::class, "home"])->name('home');
+Route::get('/home', [FrontendController::class, "home"])->name('home');
 Route::get('/blog/{id}', [FrontendController::class, 'singleBlog'])->name('singleBlog.show');
 Route::get('/project/{id}', [FrontendController::class, 'singleProject'])->name('singleProject.show');
 Route::get('/blogs', [FrontendController::class, 'allBlogs'])->name('allBlogs');
 Route::get('/projects', [FrontendController::class, 'allProjects'])->name('allProjects');
+ 
+
+Route::post('/khalti/initiate', [KhaltiController::class, 'initiatePayment'])->name('khalti.initiate');
+
 
 
 

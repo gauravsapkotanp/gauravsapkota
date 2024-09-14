@@ -23,6 +23,7 @@
         "@emailjs/browser": "^4.3.3",
         "@react-three/drei": "^9.0.1",
         "@react-three/fiber": "^8.16.2",
+        "crypto-js": "^4.2.0",
         "framer-motion": "^11.1.7",
         "jspdf": "^2.5.1",
         "jspdf-autotable": "^3.8.2",

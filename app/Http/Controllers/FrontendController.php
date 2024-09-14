@@ -6,7 +6,7 @@ use App\Models\Blog;
 use App\Models\Visit;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
@@ -45,13 +45,8 @@ class FrontendController extends Controller
     public function home()
     {
         $this->visits();
-        $blogs = Blog::latest()->take(3)->get();
         return Inertia::render('Welcome', [
-            'blogs' => $blogs,
-            'canLogin' => Route::has('login'),
-            'canRegister' => Route::has('register'),
-            'laravelVersion' => Application::VERSION,
-            'phpVersion' => PHP_VERSION,
+            
         ]);
     }
 
@@ -102,13 +97,12 @@ class FrontendController extends Controller
    public function choosepayment(Request $request)
 {
     $this->visits();
-    // Retrieve the price from the query parameter
     $price = $request->input('price');
-
     return Inertia::render('ChoosePayment', [
-        'price' => $price, // Pass the price to the view
+        'price' => $price,  
     ]);
 }
+ 
 }
 
 
