@@ -109,7 +109,7 @@ const NavSwiper = () => {
             </div>
             <div
                 ref={navigationNextRef}
-                className="mx-16 -next z-10 hover:bg-sky-600 bg-gray-600 text-white   right-4 top-1/2 transform translate-y-48 rounded-xl w-10 h-10 flex items-center justify-center absolute cursor-pointer"
+                className="mx-16   z-10 hover:bg-sky-600 bg-gray-600 text-white   right-4 top-1/2 transform translate-y-48 rounded-xl w-10 h-10 flex items-center justify-center absolute cursor-pointer"
             >
                 <MdOutlineArrowRight className="text-5xl text-white" />
             </div>
