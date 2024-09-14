@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Visit;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
@@ -97,6 +99,18 @@ class FrontendController extends Controller
     }
 
 
+   public function choosepayment(Request $request)
+{
+    $this->visits();
+    // Retrieve the price from the query parameter
+    $price = $request->input('price');
+
+    return Inertia::render('ChoosePayment', [
+        'price' => $price, // Pass the price to the view
+    ]);
+}
+}
+
+
       
  
-}

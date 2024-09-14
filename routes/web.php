@@ -16,6 +16,7 @@ Route::get('/signup', [FrontendController::class, "signup"])->name('signup');
 Route::get('/signup/step2', [FrontendController::class, "signupstep2"])->name('signupstep2');
 Route::get('/signup/step3', [FrontendController::class, "signupstep3"])->name('signupstep3');
 Route::get('/signup/planform', [FrontendController::class, "planform"])->name('planform');
+Route::get('/choosepaymentmethod', [FrontendController::class, "choosepayment"])->name('choosepayment');
 // Route::get('/', [FrontendController::class, "home"])->name('home');
 Route::get('/blog/{id}', [FrontendController::class, 'singleBlog'])->name('singleBlog.show');
 Route::get('/project/{id}', [FrontendController::class, 'singleProject'])->name('singleProject.show');

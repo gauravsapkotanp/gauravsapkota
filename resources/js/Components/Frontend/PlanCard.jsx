@@ -33,7 +33,7 @@ const PlanCard = ({
                 <h1 className="pb-1.5 uppercase font-bold text-sm">
                     Monthly Price
                 </h1>
-                <p className="border-b pb-4 border-black">{price}</p>
+                <p className="border-b pb-4 border-black">NPR {price}</p>
             </div>
             <div className="p-2">
                 <h1 className="pb-1.5 uppercase font-bold text-sm">
