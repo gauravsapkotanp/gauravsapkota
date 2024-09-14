@@ -81,6 +81,21 @@ class FrontendController extends Controller
         ]);
     }
 
+    
+     public function signupstep3()
+    {
+        $this->visits();
+        return Inertia::render('SignUpStep3', [
+        ]);
+    }
+
+     public function planform()
+    {
+        $this->visits();
+        return Inertia::render('PlanForm', [
+        ]);
+    }
+
 
       
  
