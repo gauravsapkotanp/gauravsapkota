@@ -36,14 +36,23 @@ const Header = () => {
                         />
                         <RiSearchLine className="text-3xl text-sky-500" />
                     </div>
-                    <div className=" ">
-                        <Link>
-                            <button className="border-2  py-3 transition-all ease-in-out duration-300 delay-75  hover:bg-sky-600 hover:border-sky-600 hover:text-white px-7 rounded-full flex items-center justify-items-center gap-2">
-                                <h1 className="text-white">Login</h1>
-                                <MdOutlineArrowRightAlt className="text-2xl text-white " />
-                            </button>
-                        </Link>
-                    </div>
+                    <ul className="flex items-center gap-10">
+                        <li className="text-white text-xl hover:text-sky-500 transition-all ease-in-out duration-500 hover:cursor-pointer">
+                            Home
+                        </li>
+                        <li className="text-white text-xl hover:text-sky-500 transition-all ease-in-out duration-500 hover:cursor-pointer">
+                            Genre
+                        </li>
+                        <li className="text-white text-xl hover:text-sky-500 transition-all ease-in-out duration-500 hover:cursor-pointer">
+                            Country
+                        </li>
+                        <li className="text-white text-xl hover:text-sky-500 transition-all ease-in-out duration-500 hover:cursor-pointer">
+                            Movies
+                        </li>
+                        <li className="text-white text-xl hover:text-sky-500 transition-all ease-in-out duration-500 hover:cursor-pointer">
+                            TV-Series
+                        </li>
+                    </ul>
                 </div>
             </div>
         </header>
