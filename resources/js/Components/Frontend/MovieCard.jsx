@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
 
 import "../../../css/navswiper.css";
-import {
-    RiPlayCircleFill,
-    RiBookmarkLine,
-    RiBookmarkFill,
-    RiStarFill,
-} from "react-icons/ri";
+import { RiPlayCircleFill, RiStarFill } from "react-icons/ri";
 
-const MovieCard = () => {
+const MovieCard = ({
+    image,
+    quality,
+    year,
+    type,
+    duration,
+    title,
+    description,
+    imdb,
+    rating,
+}) => {
     const [hover, setHover] = useState(false);
 
     const [showDetails, setShowDetails] = useState(false);
@@ -43,33 +48,35 @@ const MovieCard = () => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                <div className="w-48   group-hover:cursor-pointer transition-all ease-in-out duration-300 delay-150">
-                    <div className="w-48">
+                <div className="w-56   group-hover:cursor-pointer transition-all ease-in-out duration-300 delay-150">
+                    <div className="w-56">
                         <div className="relative  ">
                             <div>
                                 <img
-                                    className="h-64 w-48 rounded-2xl object-cover shadow-inner-custom "
-                                    src="/images/img1.jpg"
+                                    className="h-72 w-56 rounded-2xl object-cover shadow-inner-custom "
+                                    src={image}
                                     alt=""
                                 />
                             </div>
 
                             <RiPlayCircleFill className="absolute z-20 inset-0 m-auto mt-20 text-5xl text-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out" />
                             <span className="bg-sky-600 text-xs text-white rounded-br-lg rounded-tr-lg font-bold uppercase px-1.5 py-1 absolute top-5 z-20">
-                                HD
+                                {quality}
                             </span>
-                            <div className="absolute z-10 h-64 w-48 shadow-overlay-card opacity-0 group-hover:opacity-70 rounded-2xl transition-all ease-in-out duration-300 delay-150"></div>
+                            <div className="absolute z-10 h-64 w-56 shadow-overlay-card opacity-0 group-hover:opacity-70 rounded-2xl transition-all ease-in-out duration-300 delay-150"></div>
                             <div className="flex items-center justify-between py-2 px-2">
-                                <h1 className="text-gray-500 text-xs">2024</h1>
+                                <h1 className="text-gray-500 text-xs">
+                                    {year}
+                                </h1>
                                 <h1 className="border-2 border-gray-500 text-xs text-gray-500 group-hover:text-sky-600 group-hover:border-sky-600 transition-all ease-in-out duration-300 delay-150 uppercase px-1 rounded-full">
-                                    Movie
+                                    {type}
                                 </h1>
                                 <span className="text-gray-500 text-xs">
-                                    99 min
+                                    {duration}
                                 </span>
                             </div>
                             <h1 className="text-gray-300 text-lg font-bold group-hover:text-sky-600 px-2 transition-all ease-in-out duration-300 delay-150">
-                                IF
+                                {title}
                             </h1>
                         </div>
                     </div>
@@ -79,29 +86,33 @@ const MovieCard = () => {
                         <div className="bg-[#181818] bg-opacity-80 backdrop-blur-3xl shadow-xl rounded-lg p-4 transition-opacity duration-300 ease-in-out">
                             <div className="flex items-center justify-between">
                                 <h1 className="text-xl font-bold text-white">
-                                    IF
+                                    {title}
                                 </h1>
-                                <RiBookmarkLine className="text-2xl text-white hover:text-sky-600" />
                             </div>
                             <div className="flex items-center my-2 gap-2">
                                 <span className="bg-sky-600 text-xs text-black font-bold uppercase px-2 py-1 rounded-full">
-                                    HD
+                                    {quality}
                                 </span>
-                                <span className="border-2 border-sky-600 text-sky-600 text-sm uppercase px-1 rounded-full">
-                                    PG
+                                <span className="border-2 border-sky-600 text-sky-600 text-xs uppercase p-2 rounded-full">
+                                    {rating}
                                 </span>
                                 <div className="flex gap-1 items-center">
                                     <RiStarFill className="text-sky-600 text-sm" />
                                     <span className="text-sky-600 text-sm">
-                                        0
+                                        {imdb}
                                     </span>
                                 </div>
                                 <span className="text-sky-600 text-sm">
-                                    2024
+                                    {year}
                                 </span>
                                 <span className="text-sky-600 text-sm">
-                                    99 min
+                                    {duration}
                                 </span>
+                            </div>
+                            <div>
+                                <p className="text-xl text-white">
+                                    {description}
+                                </p>
                             </div>
                         </div>
                     </div>

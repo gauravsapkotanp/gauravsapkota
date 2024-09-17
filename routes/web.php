@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\FrontendController;
@@ -37,7 +38,22 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     //dashboard
-    // Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+   //blogs
+    Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
+    Route::get('/blogs/create', [BlogController::class, 'create'])->name('blogs.create');
+    Route::post('/blogs/store', [BlogController::class, 'store'])->name('blogs.store');
+    Route::get('/blogs/edit/{blog}', [BlogController::class, 'edit'])->name('blogs.edit');
+    Route::post('/blogs/update/{blog}', [BlogController::class, 'update'])->name('blogs.update');
+    Route::get('/blogs/delete/{blog}', [BlogController::class, 'delete'])->name('blogs.delete');
+
+     //movies
+    Route::get('/movies', [MovieController::class, 'index'])->name('movies.index');
+    Route::get('/movies/create', [MovieController::class, 'create'])->name('movies.create');
+    Route::post('/movies/store', [MovieController::class, 'store'])->name('movies.store');
+    Route::get('/movies/edit/{movie}', [MovieController::class, 'edit'])->name('movies.edit');
+    Route::post('/movies/update/{movie}', [MovieController::class, 'update'])->name('movies.update');
+    Route::get('/movies/delete/{movie}', [MovieController::class, 'delete'])->name('movies.delete');
 
  
 });

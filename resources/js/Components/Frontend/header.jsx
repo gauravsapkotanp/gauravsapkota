@@ -1,18 +1,14 @@
-// Header.jsx
-
-import { Link } from "@inertiajs/react";
-import React from "react";
-import {
-    RiFacebookFill,
-    RiInstagramFill,
-    RiSearchLine,
-    RiTwitterFill,
-    RiLinkedinFill,
-    RiMenu4Fill,
-} from "react-icons/ri";
-import { MdOutlineArrowRightAlt } from "react-icons/md";
+import { useState } from "react";
+import { RiSearchLine, RiMenu4Fill } from "react-icons/ri";
+import FilterModal from "./FilterModal";
 
 const Header = () => {
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const toggleModal = () => {
+        setModalOpen(!isModalOpen);
+    };
+
     return (
         <header className="relative z-20">
             <div className="w-full p-4 px-16">
@@ -22,11 +18,14 @@ const Header = () => {
                         <img
                             src="/images/logo.png"
                             className="  mx-auto w-32 "
-                            alt=""
+                            alt="Logo"
                         />
                     </div>
-                    <div className=" flex items-center justify-items-center justify-between bg-black  px-3 py-1.5 w-[500px] bg-opacity-60 rounded-full shadow-2xl hover:shadow-[0_0_22px_#000000] hover:bg-opacity-100 transition-all ease-in-out duration-300 delay-100">
-                        <button className="text-gray-300 px-4 bg-gray-700  rounded-full py-1">
+                    <div className="flex items-center justify-between bg-black px-3 py-1.5 w-[500px] bg-opacity-60 rounded-full shadow-2xl hover:shadow-[0_0_22px_#000000] hover:bg-opacity-100 transition-all ease-in-out duration-300 delay-100">
+                        <button
+                            onClick={toggleModal}
+                            className="text-gray-300 px-4 bg-gray-700 rounded-full py-1"
+                        >
                             Filter
                         </button>
                         <input
@@ -55,6 +54,8 @@ const Header = () => {
                     </ul>
                 </div>
             </div>
+
+            {isModalOpen && <FilterModal toggleModal={toggleModal} />}
         </header>
     );
 };

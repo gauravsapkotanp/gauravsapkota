@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Movies;
 use App\Models\Visit;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
@@ -45,7 +46,9 @@ class FrontendController extends Controller
     public function home()
     {
         $this->visits();
+        $movies=Movies::all();
         return Inertia::render('Welcome', [
+            'movies' => $movies,
             
         ]);
     }
