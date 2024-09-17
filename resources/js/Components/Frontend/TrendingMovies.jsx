@@ -1,3 +1,4 @@
+import { Link } from "@inertiajs/react";
 import React from "react";
 
 // Merge Sort Algorithm
@@ -58,21 +59,23 @@ const TrendingMovies = ({ movies }) => {
                 </h1>
             </div>
             <div className="grid grid-cols-1 gap-y-4">
-                {filteredMovies.map((movie) => (
-                    <div key={movie.id} className="relative">
-                        <div className="w-full h-32 object-cover overflow-hidden rounded-xl">
-                            <img
-                                className="w-full h-32 object-cover rounded-xl scale-100 hover:scale-105 transition-transform duration-500 ease-in-out"
-                                src={`/img/movies/${movie.thumbnail}`}
-                                alt={movie.title}
-                            />
+                {filteredMovies.map((movie, index) => (
+                    <Link href={route("watchmovie.show", { id: movie.id })}>
+                        <div key={index} className="relative">
+                            <div className="w-full h-32 object-cover overflow-hidden rounded-xl">
+                                <img
+                                    className="w-full h-32 object-cover rounded-xl scale-100 hover:scale-105 transition-transform duration-500 ease-in-out"
+                                    src={`/img/movies/${movie.thumbnail}`}
+                                    alt={movie.title}
+                                />
+                            </div>
+                            <div className="absolute bottom-0 left-0 bg-black w-full bg-opacity-50 backdrop-blur-sm p-2">
+                                <h1 className="text-white text-xl font-bold">
+                                    {movie.title}
+                                </h1>
+                            </div>
                         </div>
-                        <div className="absolute bottom-0 left-0 bg-black w-full bg-opacity-50 backdrop-blur-sm p-2">
-                            <h1 className="text-white text-xl font-bold">
-                                {movie.title}
-                            </h1>
-                        </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>

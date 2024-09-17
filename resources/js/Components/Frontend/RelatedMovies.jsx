@@ -33,7 +33,6 @@ const merge = (left, right, compareFn) => {
 const filterMoviesByViews = (movies) => {
     // Comparator function for sorting by views
     const compareMoviesByViews = (a, b) => {
-        // Compare movies by views in descending order
         return b.views - a.views;
     };
 
@@ -44,8 +43,14 @@ const filterMoviesByViews = (movies) => {
     return sortedMovies.slice(0, 12);
 };
 
-const RelatedMovie = ({ movies }) => {
-    const filteredMovies = filterMoviesByViews(movies);
+const RelatedMovies = ({ movies, genre }) => {
+    // Filter the movies by genre
+    const filteredMoviesByGenre = movies.filter(
+        (movie) => movie.genre === genre
+    );
+
+    // Now sort the filtered movies by views
+    const filteredMovies = filterMoviesByViews(filteredMoviesByGenre);
 
     return (
         <>
@@ -56,9 +61,10 @@ const RelatedMovie = ({ movies }) => {
             </div>
             <div className=" ">
                 <div className="grid grid-cols-6 gap-10">
-                    {filteredMovies.map((movie) => (
+                    {filteredMovies.map((movie, index) => (
                         <MovieCard
-                            key={movie.id}
+                            id={movie.id}
+                            key={index}
                             description={movie.description}
                             duration={movie.duration}
                             image={"/img/movies/" + movie.thumbnail}
@@ -77,4 +83,4 @@ const RelatedMovie = ({ movies }) => {
     );
 };
 
-export default RelatedMovie;
+export default RelatedMovies;

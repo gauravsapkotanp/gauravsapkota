@@ -3,7 +3,10 @@ import Header from "@/Components/Frontend/header";
 import RelatedMovies from "@/Components/Frontend/RelatedMovies";
 import React from "react";
 
-const WatchMovie = ({ movies }) => {
+const WatchMovie = ({ movies, movie }) => {
+    if (!movie) {
+        return <div>Loading...</div>;
+    }
     return (
         <div className="bg-[#181818] ">
             <Header />
@@ -12,7 +15,7 @@ const WatchMovie = ({ movies }) => {
                     <iframe
                         className="w-full h-full rounded-3xl shadow-2xl group-hover:shadow-sky-600 transition-all ease-in-out duration-500   "
                         typeof="text/html"
-                        src="https://www.youtube.com/embed/1cX4t5-YpHQ"
+                        src={movie.link}
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
@@ -23,22 +26,17 @@ const WatchMovie = ({ movies }) => {
                     <div className="col-span-1">
                         <img
                             className="w-64 h-full rounded-3xl shadow-2xl"
-                            src="/img/movies/antmanandthewaspquantumania_lob_crd_03_1726560329.jpg"
+                            src={`/img/movies/${movie.thumbnail}`}
                             alt=""
                         />
                     </div>
                     <div className="flex-1 ">
                         <div>
                             <h1 className="text-yellow-500 text-4xl font-bold">
-                                Alien: Romulus
+                                {movie.title}
                             </h1>
                             <p className="text-gray-500 text-lg py-5 pr-44 leading-9 tracking-wider">
-                                Lorem ipsum, dolor sit amet consectetur
-                                adipisicing elit. Recusandae minus soluta
-                                veritatis reprehenderit et ad necessitatibus
-                                dolor expedita omnis? Nihil ex facilis sunt
-                                minus eligendi quidem nesciunt vitae cupiditate
-                                officiis.
+                                {movie.description}
                             </p>
                             <div className="grid grid-cols-2">
                                 <div>
@@ -47,7 +45,7 @@ const WatchMovie = ({ movies }) => {
                                             Genre :
                                         </h1>
                                         <h1 className="text-sky-500 font-light text-xl ">
-                                            Horror
+                                            {movie.genre}
                                         </h1>
                                     </div>
                                     <div className="flex gap-5 pb-2">
@@ -55,7 +53,7 @@ const WatchMovie = ({ movies }) => {
                                             Actor :
                                         </h1>
                                         <h1 className="text-sky-500 font-light text-xl ">
-                                            Gaurav Sapkota
+                                            {movie.actor}
                                         </h1>
                                     </div>
                                     <div className="flex gap-5 pb-2">
@@ -63,7 +61,7 @@ const WatchMovie = ({ movies }) => {
                                             Director :
                                         </h1>
                                         <h1 className="text-sky-500 font-light text-xl ">
-                                            Roshan Khanal
+                                            {movie.director}
                                         </h1>
                                     </div>
                                     <div className="flex gap-5 pb-2">
@@ -71,7 +69,7 @@ const WatchMovie = ({ movies }) => {
                                             Country :
                                         </h1>
                                         <h1 className="text-sky-500 font-light text-xl ">
-                                            Spain
+                                            {movie.country}
                                         </h1>
                                     </div>
                                 </div>
@@ -81,7 +79,7 @@ const WatchMovie = ({ movies }) => {
                                             Duration :
                                         </h1>
                                         <h1 className="text-sky-500 font-light text-xl ">
-                                            199 min
+                                            {movie.duration}
                                         </h1>
                                     </div>
                                     <div className="flex gap-5 pb-2">
@@ -89,7 +87,7 @@ const WatchMovie = ({ movies }) => {
                                             Quality :
                                         </h1>
                                         <h1 className="text-black font-bold text-xl bg-yellow-500 px-2 rounded-full ">
-                                            CAM
+                                            {movie.quality}
                                         </h1>
                                     </div>
                                     <div className="flex gap-5 pb-2">
@@ -97,7 +95,7 @@ const WatchMovie = ({ movies }) => {
                                             Release :
                                         </h1>
                                         <h1 className="text-sky-500 font-light text-xl ">
-                                            2024
+                                            {movie.year}
                                         </h1>
                                     </div>
                                     <div className="flex gap-5 pb-2">
@@ -105,7 +103,7 @@ const WatchMovie = ({ movies }) => {
                                             ImDb :
                                         </h1>
                                         <h1 className="text-sky-500 font-light text-xl ">
-                                            75
+                                            {movie.imdb}
                                         </h1>
                                     </div>
                                 </div>
@@ -115,7 +113,7 @@ const WatchMovie = ({ movies }) => {
                 </div>
             </div>
             <div className="px-36">
-                <RelatedMovies movies={movies} />
+                <RelatedMovies movies={movies} genre={movie.genre} />
             </div>
             <Footer />
         </div>

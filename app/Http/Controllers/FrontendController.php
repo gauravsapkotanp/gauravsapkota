@@ -97,12 +97,14 @@ class FrontendController extends Controller
     }
 
     
-     public function watchmovie()
+     public function watchmovie($id)
     {
         $this->visits();
-         $movies=Movies::all();
+        $movie=Movies::find($id);
+        $movies=Movies::where('id', '!=', $movie->id)->get();
         return Inertia::render('WatchMovie', [
             'movies' => $movies,
+            'movie' => $movie,
         ]);
     }
 

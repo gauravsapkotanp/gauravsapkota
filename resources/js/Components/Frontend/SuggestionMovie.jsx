@@ -58,9 +58,10 @@ const SuggestionMovie = ({ movies }) => {
             </div>
             <div className="    ">
                 <div className="grid grid-cols-6 gap-10    ">
-                    {filteredMovies.map((movie) => (
+                    {filteredMovies.map((movie, index) => (
                         <MovieCard
-                            key={movie.id}
+                            id={movie.id}
+                            key={index}
                             description={movie.description}
                             duration={movie.duration}
                             image={"/img/movies/" + movie.thumbnail}

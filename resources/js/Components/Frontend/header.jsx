@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { RiSearchLine, RiMenu4Fill } from "react-icons/ri";
 import FilterModal from "./FilterModal";
+import { Link } from "@inertiajs/react";
+import { route } from "ziggy-js";
 
 const Header = () => {
     const [isModalOpen, setModalOpen] = useState(false);
@@ -13,7 +15,7 @@ const Header = () => {
         <header className="relative z-20">
             <div className="w-full p-4 px-16">
                 <div className="flex gap-10 items-center justify-between">
-                    <a href="">
+                    <Link href={route("home")}>
                         <div className="flex gap-5">
                             <RiMenu4Fill className="text-4xl text-white" />
                             <img
@@ -22,7 +24,7 @@ const Header = () => {
                                 alt="Logo"
                             />
                         </div>
-                    </a>
+                    </Link>
                     <div className="flex items-center justify-between bg-black px-3 py-1.5 w-[500px] bg-opacity-60 rounded-full shadow-2xl hover:shadow-[0_0_22px_#000000] hover:bg-opacity-100 transition-all ease-in-out duration-300 delay-100">
                         <button
                             onClick={toggleModal}

@@ -20,7 +20,7 @@ Route::get('/signup/step3', [FrontendController::class, "signupstep3"])->name('s
 Route::get('/signup/planform', [FrontendController::class, "planform"])->name('planform');
 Route::get('/choosepaymentmethod', [FrontendController::class, "choosepayment"])->name('choosepayment');
 Route::get('/home', [FrontendController::class, "home"])->name('home');
-Route::get('/watch/movie', [FrontendController::class, "watchmovie"])->name('watchmovie');
+Route::get('/movie/{id}', [FrontendController::class, "watchmovie"])->name('watchmovie.show');
  
  
 
