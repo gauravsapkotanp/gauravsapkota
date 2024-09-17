@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Movies;
+use App\Models\User;
 use App\Models\Visit;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -67,27 +69,46 @@ class FrontendController extends Controller
         ]);
     }
     
-     public function signup()
-    {
-        $this->visits();
-        return Inertia::render('SignUp', [
-        ]);
-    }
+   public function signup(Request $request)
+{
+    $this->visits();
+    return Inertia::render('SignUp', [
+        'email' => $request->input('email'),   
+    ]);
+}
 
-     public function signupstep2()
-    {
-        $this->visits();
-        return Inertia::render('SignUpStep2', [
-        ]);
-    }
+public function signupstep2(Request $request)
+{
+    $this->visits();
+    return Inertia::render('SignUpStep2', [
+        'email' => $request->input('email'),   
+    ]);
+}
 
+public function signupstep3(Request $request)
+{
+    $this->visits();
     
-     public function signupstep3()
-    {
-        $this->visits();
-        return Inertia::render('SignUpStep3', [
-        ]);
-    }
+    // Validate the email and password
+    $request->validate([
+        'email' => 'required|email|unique:users,email', // Ensure the email is unique in the users table
+        'password' => 'required|min:6',
+    ]);
+
+    // Create a new user with 'inactive' status and 'User' role
+    $user = User::create([
+        'email' => $request->input('email'),
+        'password' => Hash::make($request->input('password')), // Hash the password for security
+        'status' => 'inactive', // Set the user as inactive
+        'role' => 'User', // Assign role as "User"
+    ]);
+
+    // Redirect to the next step or confirmation page
+    return Inertia::render('SignUpStep3', [
+        'email' => $request->input('email'),
+    ]);
+}
+
 
      public function planform()
     {

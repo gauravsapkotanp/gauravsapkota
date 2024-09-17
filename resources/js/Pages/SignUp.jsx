@@ -1,7 +1,8 @@
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import React from "react";
 
 const SignUp = () => {
+    const { email } = usePage().props;
     return (
         <>
             <div className=" bg-white">
@@ -42,6 +43,7 @@ const SignUp = () => {
                             Step <span className="font-bold"> 1</span> of
                             <span className="font-bold"> 3</span>
                         </h1>
+                        <p className="text-lg">Email: {email}</p>
                         <h1 className="text-4xl font-bold text-black tracking-wider">
                             Finish setting up your <br /> account
                         </h1>
@@ -50,7 +52,11 @@ const SignUp = () => {
                             password to watch on any <br /> devices at any time
                         </p>
 
-                        <Link href={route("signupstep2")}>
+                        <Link
+                            href={route("signupstep2")}
+                            method="get"
+                            data={{ email }}
+                        >
                             <button className="bg-indigo-500 text-2xl px-8 py-5 w-full rounded-lg hover:bg-indigo-300 transition-all ease-in-out duration-300 delay-75 text-white font-bold">
                                 Next
                             </button>

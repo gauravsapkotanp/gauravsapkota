@@ -14,23 +14,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendController::class, "main"])->name('main');
 Route::get('/getstarted', [FrontendController::class, "getstarted"])->name('getstarted');
-Route::get('/signup', [FrontendController::class, "signup"])->name('signup');
+Route::post('/signup', [FrontendController::class, "signup"])->name('signup');
 Route::get('/signup/step2', [FrontendController::class, "signupstep2"])->name('signupstep2');
-Route::get('/signup/step3', [FrontendController::class, "signupstep3"])->name('signupstep3');
+Route::post('/signup/step3', [FrontendController::class, "signupstep3"])->name('signupstep3');
 Route::get('/signup/planform', [FrontendController::class, "planform"])->name('planform');
 Route::get('/choosepaymentmethod', [FrontendController::class, "choosepayment"])->name('choosepayment');
-Route::get('/home', [FrontendController::class, "home"])->name('home');
-Route::get('/movie/{id}', [FrontendController::class, "watchmovie"])->name('watchmovie.show');
+
  
  
 
 Route::post('/khalti/initiate', [KhaltiController::class, 'initiatePayment'])->name('khalti.initiate');
 
+Route::middleware('user')->group(function () {
+   Route::get('/home', [FrontendController::class, "home"])->name('home');
+   Route::get('/movie/{id}', [FrontendController::class, "watchmovie"])->name('watchmovie.show');
+});
 
 
 
-
-Route::prefix('admin')->middleware('auth')->group(function () {
+Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
