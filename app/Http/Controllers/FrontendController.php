@@ -96,6 +96,16 @@ class FrontendController extends Controller
         ]);
     }
 
+    
+     public function watchmovie()
+    {
+        $this->visits();
+         $movies=Movies::all();
+        return Inertia::render('WatchMovie', [
+            'movies' => $movies,
+        ]);
+    }
+
 
    public function choosepayment(Request $request)
 {

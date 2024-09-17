@@ -128,7 +128,7 @@ const Create = () => {
     return (
         <>
             <AdminLayout>
-                <div className="pt-12 lg:pt-0 px-4 pb-36 bg-gradient-to-r from-orange-400 to-orange-500">
+                <div className="pt-12 lg:pt-0 px-4 pb-36 bg-gradient-to-r from-sky-400 to-sky-500">
                     <h1 className="text-lg font-bold text-white pt-12 lg:pl-4 uppercase">
                         Add movies
                     </h1>

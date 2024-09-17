@@ -14,16 +14,24 @@ const Footer = () => {
                 }}
                 className=" w-full   "
             >
-                <div className="">
-                    <div className="grid grid-cols-3 gap-10 px-36 py-16">
-                        <div>
-                            <img
-                                className="w-48 h-full"
-                                src="/images/logo.png"
-                                alt=""
-                            />
-                        </div>
-                    </div>
+                <div className="px-36 py-16">
+                    <img
+                        className="w-48 h-full mx-auto"
+                        src="/images/logo.png"
+                        alt=""
+                    />
+
+                    <p className="text-white text-center pt-5 px-36">
+                        Streamly - Free movies online, here you can watch movies
+                        online in high quality for free without annoying of
+                        advertising, just come and enjoy your movies online.
+                        Streamlies, streamly, bmovies <br /> <br />
+                        <span className="text-yellow-600 text-xl">
+                            Disclaimer: This site does not store any files on
+                            its server. All contents are provided by
+                            non-affiliated third parties.
+                        </span>
+                    </p>
                 </div>
             </div>
         </footer>

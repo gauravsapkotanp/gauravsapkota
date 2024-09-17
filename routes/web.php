@@ -20,10 +20,8 @@ Route::get('/signup/step3', [FrontendController::class, "signupstep3"])->name('s
 Route::get('/signup/planform', [FrontendController::class, "planform"])->name('planform');
 Route::get('/choosepaymentmethod', [FrontendController::class, "choosepayment"])->name('choosepayment');
 Route::get('/home', [FrontendController::class, "home"])->name('home');
-Route::get('/blog/{id}', [FrontendController::class, 'singleBlog'])->name('singleBlog.show');
-Route::get('/project/{id}', [FrontendController::class, 'singleProject'])->name('singleProject.show');
-Route::get('/blogs', [FrontendController::class, 'allBlogs'])->name('allBlogs');
-Route::get('/projects', [FrontendController::class, 'allProjects'])->name('allProjects');
+Route::get('/watch/movie', [FrontendController::class, "watchmovie"])->name('watchmovie');
+ 
  
 
 Route::post('/khalti/initiate', [KhaltiController::class, 'initiatePayment'])->name('khalti.initiate');

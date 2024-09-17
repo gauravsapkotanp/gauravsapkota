@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Contact;
+use App\Models\Movies;
 use App\Models\Project;
 use App\Models\Testimonial;
 use App\Models\Visit;
@@ -21,6 +22,7 @@ class DashboardController extends Controller
         $visitdate = Visit::where('visit_date', '>=', $date)->pluck('visit_date');
         $visits = Visit::where('visit_date', '>=', $date)->pluck('no_of_visits');
         $totalblogs = Blog::all()->count();
+        $movies=Movies::all();
         // $totalprojects = Project::all()->count();
         // $totaltestimonials = Testimonial::all()->count();
         // $totalmessages = Contact::all()->count();
@@ -31,6 +33,7 @@ class DashboardController extends Controller
             'visitdate' => $visitdate,
             'visits' => $visits,
             'totalblogs' => $totalblogs,
+            'movies' => $movies,
             // 'totalprojects' => $totalprojects,
             // 'totaltestimonials' => $totaltestimonials,
             // 'totalmessages' => $totalmessages,

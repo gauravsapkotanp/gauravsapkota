@@ -4,6 +4,8 @@ import { RiDashboardFill, RiCloseCircleFill, RiMenuFill } from "react-icons/ri";
 import { router } from "@inertiajs/react";
 import { ToastContainer } from "react-toastify";
 import { route } from "ziggy-js";
+import { FaUserSecret } from "react-icons/fa";
+import { BiCameraMovie } from "react-icons/bi";
 
 export default function AdminLayout({ children }) {
     const [isCollapsed, setIsCollapsed] = useState(() => {
@@ -17,7 +19,7 @@ export default function AdminLayout({ children }) {
 
     function handleLogout(e) {
         e.preventDefault();
-        router.post("logout");
+        router.post(route("logout"));
     }
 
     return (
@@ -34,7 +36,7 @@ export default function AdminLayout({ children }) {
                 </div>
                 <button
                     onClick={() => setIsCollapsed(!isCollapsed)}
-                    className="bg-orange-500 float-right px-4 py-3 pb-4 m-3 rounded-xl text-white"
+                    className="bg-sky-500 float-right px-4 py-3 pb-4 m-3 rounded-xl text-white"
                 >
                     <RiMenuFill className="text-2xl text-white" />
                 </button>
@@ -49,7 +51,7 @@ export default function AdminLayout({ children }) {
                         className={`w-64 mx-auto rounded-full ${
                             isCollapsed ? "w-36" : "w-40"
                         }`}
-                        src="/images/user.jpg"
+                        src="/images/logo.png"
                         alt=""
                     />
                 </div>
@@ -58,7 +60,7 @@ export default function AdminLayout({ children }) {
                         <NavLink
                             href={route("dashboard")}
                             active={route().current("dashboard")}
-                            activeClass="bg-gradient-to-r from-orange-500 to-orange-400 text-white rounded-md shadow-md shadow-blue-200"
+                            activeClass="bg-gradient-to-r from-sky-500 to-sky-400 text-white rounded-md shadow-md shadow-blue-200"
                         >
                             <li className="text-xl font-medium p-2 flex items-center gap-2">
                                 <RiDashboardFill className="text-2xl" />
@@ -71,7 +73,7 @@ export default function AdminLayout({ children }) {
                                 </span>
                             </li>
                         </NavLink>
-                        <NavLink
+                        {/* <NavLink
                             href={route("blogs.index")}
                             active={route().current("blogs.*")}
                         >
@@ -85,19 +87,31 @@ export default function AdminLayout({ children }) {
                                     Blogs
                                 </span>
                             </li>
-                        </NavLink>
+                        </NavLink> */}
                         <NavLink
                             href={route("movies.index")}
                             active={route().current("movies.*")}
                         >
                             <li className="text-xl font-medium p-2 flex items-center gap-2">
-                                <RiDashboardFill className="text-2xl" />
+                                <BiCameraMovie className="text-2xl" />
                                 <span
                                     className={`text-sm ${
                                         isCollapsed ? "hidden" : "block"
                                     }`}
                                 >
                                     Movies
+                                </span>
+                            </li>
+                        </NavLink>
+                        <NavLink>
+                            <li className="text-xl font-medium p-2 flex items-center gap-2">
+                                <FaUserSecret className="text-2xl" />
+                                <span
+                                    className={`text-sm ${
+                                        isCollapsed ? "hidden" : "block"
+                                    }`}
+                                >
+                                    Users
                                 </span>
                             </li>
                         </NavLink>
