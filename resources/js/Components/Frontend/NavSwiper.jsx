@@ -7,8 +7,9 @@ import { RiStarFill, RiPlayCircleFill, RiBookmarkFill } from "react-icons/ri";
 import { Scrollbar, Navigation } from "swiper/modules";
 import { MdOutlineArrowRight, MdOutlineArrowLeft } from "react-icons/md";
 import "../../../css/navswiper.css";
+import { Link } from "@inertiajs/react";
 
-const NavSwiper = () => {
+const NavSwiper = ({ movies }) => {
     // Initialize Swiper navigation ref
     const navigationPrevRef = React.useRef(null);
     const navigationNextRef = React.useRef(null);
@@ -26,72 +27,54 @@ const NavSwiper = () => {
             modules={[Scrollbar, Navigation]}
             className="mySwiper relative "
         >
-            {[
-                "/images/swiper1.jpg",
-                "/images/img1.jpg",
-                "/images/img2.jpg",
-                "/images/img3.jpg",
-                "/images/img4.jpg",
-                "/images/img5.jpg",
-                "/images/img6.jpg",
-                "/images/swiper1.jpg",
-            ].map((src, index) => (
+            {movies.map((movie, index) => (
                 <SwiperSlide key={index} className="relative">
                     <img
                         className=" h-screen w-full object-cover"
-                        src={src}
+                        src={`/img/movies/${movie.thumbnail}`}
                         alt=""
                     />
                     <div className="">
-                        <div className="absolute inset-0 flex items-end mb-[250px] px-16">
+                        <div className="absolute inset-0 flex items-end mb-[100px] px-16">
                             <div className="relative z-40">
                                 <h1 className="uppercase text-4xl font-bold text-white tracking-wider">
-                                    The Infallibles
+                                    {movie.title}
                                 </h1>
                                 <div className="mt-2 flex items-center gap-4">
                                     <span className="bg-sky-600 text-xs text-black font-bold uppercase px-2 py-1 rounded-full  ">
-                                        HD
+                                        {movie.quality}
                                     </span>
                                     <span className="border-2 border-gray-300 text-xs text-gray-300 font-bold uppercase px-1 rounded-full  ">
-                                        PG
+                                        {movie.rating}
                                     </span>
                                     <div className="flex gap-1 items-center">
                                         <RiStarFill className="text-gray-300" />
-                                        <span className="text-gray-300">0</span>
+                                        <span className="text-gray-300">
+                                            {movie.imdb}
+                                        </span>
                                     </div>
-                                    <span className="text-gray-300">2024</span>
                                     <span className="text-gray-300">
-                                        99 min
+                                        {movie.year}
                                     </span>
-                                    <span className="text-gray-300">Drama</span>
                                     <span className="text-gray-300">
-                                        Thriller
+                                        {movie.duration}
                                     </span>
-                                    <span className="text-gray-300">Crime</span>
+                                    <span className="text-gray-300">
+                                        {movie.genre}
+                                    </span>
                                 </div>
                                 <div className="mt-2 max-w-[48rem] line-clamp-2">
                                     <p className="text-gray-500 tracking-wider">
-                                        Lorem ipsum, dolor sit amet consectetur
-                                        adipisicing elit. Mollitia fugiat
-                                        consequatur voluptas incidunt quam!
-                                        Omnis commodi eius nulla tempore sed
-                                        temporibus iste, doloremque non,
-                                        laudantium asperiores aspernatur tenetur
-                                        nesciunt autem?
+                                        {movie.description}
                                     </p>
                                 </div>
                                 <div className="flex gap-10 mt-6">
-                                    <button className="bg-sky-600 hover:bg-sky-700 text-black px-4 py-3 rounded-full mt-4 flex gap-2 items-center transition-all ease-in-out duration-300 delay-100">
-                                        <RiPlayCircleFill className="text-2xl" />
-                                        Watch Now
-                                    </button>
-
-                                    <div>
-                                        <button className=" text-white px-4 py-2 group rounded-md mt-4 flex items-center text-xl hover:text-sky-600 gap-2 transition-all ease-in-out duration-300 delay-100">
-                                            <RiBookmarkFill className="text-2xl" />
-                                            Bookmark
+                                    <a href={movie.link} target="_blank">
+                                        <button className="bg-sky-600 hover:bg-sky-700 text-black px-4 py-3 rounded-full mt-4 flex gap-2 items-center transition-all ease-in-out duration-300 delay-100">
+                                            <RiPlayCircleFill className="text-2xl" />
+                                            Watch Now
                                         </button>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>

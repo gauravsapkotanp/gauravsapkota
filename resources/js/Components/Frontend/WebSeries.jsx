@@ -31,31 +31,36 @@ const merge = (left, right, compareFn) => {
 };
 
 const filterMoviesByViews = (movies) => {
+    // Filter movies to include only those with type "TV Series"
+    const tvSeriesMovies = movies.filter(
+        (movie) => movie.type === "Web Series"
+    );
+
     // Comparator function for sorting by views
     const compareMoviesByViews = (a, b) => {
         // Compare movies by views in descending order
         return b.views - a.views;
     };
 
-    // Sort the movies using merge sort
-    const sortedMovies = mergeSort(movies, compareMoviesByViews);
+    // Sort the filtered movies using merge sort
+    const sortedMovies = mergeSort(tvSeriesMovies, compareMoviesByViews);
 
     // Get the top 12 movies
     return sortedMovies.slice(0, 12);
 };
 
-const PopularMovie = ({ movies }) => {
+const WebSeries = ({ movies }) => {
     const filteredMovies = filterMoviesByViews(movies);
 
     return (
         <>
-            <div className="w-full p-4   py-12">
-                <h1 className="text-3xl text-sky-500 font-bold tracking-widest border-b-2 uppercase">
-                    Popular
+            <div className="w-full p-4 px-32 py-12">
+                <h1 className="text-3xl text-sky-500 font-bold tracking-widest border-b-2">
+                    Web Series
                 </h1>
             </div>
-            <div className=" ">
-                <div className="grid grid-cols-6 gap-10">
+            <div className="px-32">
+                <div className="grid grid-cols-7 gap-10">
                     {filteredMovies.map((movie) => (
                         <MovieCard
                             key={movie.id}
@@ -77,4 +82,4 @@ const PopularMovie = ({ movies }) => {
     );
 };
 
-export default PopularMovie;
+export default WebSeries;

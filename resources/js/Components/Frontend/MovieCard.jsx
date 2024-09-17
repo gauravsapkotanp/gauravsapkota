@@ -59,11 +59,11 @@ const MovieCard = ({
                                 />
                             </div>
 
-                            <RiPlayCircleFill className="absolute z-20 inset-0 m-auto mt-20 text-5xl text-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out" />
+                            <RiPlayCircleFill className="absolute z-20 text-sky-500 inset-0 m-auto mt-20 text-5xl   opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out" />
                             <span className="bg-sky-600 text-xs text-white rounded-br-lg rounded-tr-lg font-bold uppercase px-1.5 py-1 absolute top-5 z-20">
                                 {quality}
                             </span>
-                            <div className="absolute z-10 h-64 w-56 shadow-overlay-card opacity-0 group-hover:opacity-70 rounded-2xl transition-all ease-in-out duration-300 delay-150"></div>
+                            <div className="absolute z-10 h-72 w-56 shadow-overlay-card opacity-0 group-hover:opacity-70 rounded-2xl transition-all ease-in-out duration-300 delay-150"></div>
                             <div className="flex items-center justify-between py-2 px-2">
                                 <h1 className="text-gray-500 text-xs">
                                     {year}

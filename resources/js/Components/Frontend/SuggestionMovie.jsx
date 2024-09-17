@@ -43,7 +43,7 @@ const filterMovies = (movies) => {
     const sortedMovies = mergeSort(movies, compareMovies);
 
     // Get the top 12 movies
-    return sortedMovies.slice(0, 14);
+    return sortedMovies.slice(0, 12);
 };
 
 const SuggestionMovie = ({ movies }) => {
@@ -51,13 +51,13 @@ const SuggestionMovie = ({ movies }) => {
 
     return (
         <>
-            <div className="w-full p-4 px-32 py-12">
-                <h1 className="text-3xl text-sky-500 font-bold tracking-widest border-b-2">
+            <div className="w-full p-4   py-12">
+                <h1 className="text-3xl text-sky-500 font-bold tracking-widest border-b-2 uppercase">
                     Suggestions
                 </h1>
             </div>
-            <div className="px-32   ">
-                <div className="grid grid-cols-7 gap-10    ">
+            <div className="    ">
+                <div className="grid grid-cols-6 gap-10    ">
                     {filteredMovies.map((movie) => (
                         <MovieCard
                             key={movie.id}

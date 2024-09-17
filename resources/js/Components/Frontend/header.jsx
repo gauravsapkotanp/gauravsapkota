@@ -10,7 +10,7 @@ const Header = () => {
     };
 
     return (
-        <header className="relative z-20">
+        <header className="relative z-20  ">
             <div className="w-full p-4 px-16">
                 <div className="flex gap-10 items-center justify-between">
                     <div className="flex gap-5">
@@ -35,7 +35,7 @@ const Header = () => {
                         />
                         <RiSearchLine className="text-3xl text-sky-500" />
                     </div>
-                    <ul className="flex items-center gap-10">
+                    {/* <ul className="flex items-center gap-10">
                         <li className="text-white text-xl hover:text-sky-500 transition-all ease-in-out duration-500 hover:cursor-pointer">
                             Home
                         </li>
@@ -51,7 +51,8 @@ const Header = () => {
                         <li className="text-white text-xl hover:text-sky-500 transition-all ease-in-out duration-500 hover:cursor-pointer">
                             TV-Series
                         </li>
-                    </ul>
+                    </ul> */}
+                    <div></div>
                 </div>
             </div>
 
