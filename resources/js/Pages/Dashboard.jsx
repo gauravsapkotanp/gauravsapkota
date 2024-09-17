@@ -33,7 +33,7 @@ export default function Dashboard({ movies }) {
                                 <FaBloggerB className="text-3xl" />
                             </div>
                             <div className="flex items-end justify-between ">
-                                <p className="md:text-3xl font-bold  mt-4">
+                                <p className="md:text-2xl font-bold  mt-4">
                                     Total Movies
                                 </p>
                             </div>
@@ -52,7 +52,7 @@ export default function Dashboard({ movies }) {
                                 <FaRocketchat className="text-3xl" />
                             </div>
                             <div className="flex items-end justify-between ">
-                                <p className="md:text-3xl font-bold  mt-4">
+                                <p className="md:text-2xl font-bold  mt-4">
                                     Total Web-Series
                                 </p>
                             </div>
@@ -71,7 +71,7 @@ export default function Dashboard({ movies }) {
                                 <FaStoreAlt className="text-3xl" />
                             </div>
                             <div className="flex items-end justify-between ">
-                                <p className="md:text-3xl font-bold  mt-4">
+                                <p className="md:text-2xl font-bold  mt-4">
                                     Total TV-Series
                                 </p>
                             </div>
@@ -90,7 +90,7 @@ export default function Dashboard({ movies }) {
                                 <FaStoreAlt className="text-3xl" />
                             </div>
                             <div className="flex items-end justify-between ">
-                                <p className="md:text-3xl font-bold  mt-4">
+                                <p className="md:text-2xl font-bold  mt-4">
                                     Total Users
                                 </p>
                             </div>
@@ -109,7 +109,7 @@ export default function Dashboard({ movies }) {
                                 <FaStoreAlt className="text-3xl" />
                             </div>
                             <div className="flex items-end justify-between ">
-                                <p className="md:text-3xl font-bold  mt-4">
+                                <p className="md:text-2xl font-bold  mt-4">
                                     Total Subscriptions
                                 </p>
                             </div>
