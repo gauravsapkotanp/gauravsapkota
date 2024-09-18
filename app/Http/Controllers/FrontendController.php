@@ -89,21 +89,17 @@ public function signupstep3(Request $request)
 {
     $this->visits();
     
-    // Validate the email and password
     $request->validate([
-        'email' => 'required|email|unique:users,email', // Ensure the email is unique in the users table
+        'email' => 'required|email|unique:users,email', 
         'password' => 'required|min:6',
     ]);
 
-    // Create a new user with 'inactive' status and 'User' role
     $user = User::create([
         'email' => $request->input('email'),
-        'password' => Hash::make($request->input('password')), // Hash the password for security
-        'status' => 'inactive', // Set the user as inactive
-        'role' => 'User', // Assign role as "User"
+        'password' => Hash::make($request->input('password')),  
+        'status' => 'inactive',  
+        'role' => 'User',  
     ]);
-
-    // Redirect to the next step or confirmation page
     return Inertia::render('SignUpStep3', [
         'email' => $request->input('email'),
     ]);
