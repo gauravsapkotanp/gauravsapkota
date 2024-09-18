@@ -1,14 +1,21 @@
 import { useState } from "react";
 import { RiSearchLine, RiMenu4Fill } from "react-icons/ri";
 import FilterModal from "./FilterModal";
-import { Link } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
 import { route } from "ziggy-js";
 
 const Header = () => {
+    const { post } = useForm();
+
     const [isModalOpen, setModalOpen] = useState(false);
 
     const toggleModal = () => {
         setModalOpen(!isModalOpen);
+    };
+
+    const handleLogout = (e) => {
+        e.preventDefault();
+        post(route("logout"));
     };
 
     return (
@@ -39,7 +46,14 @@ const Header = () => {
                         />
                         <RiSearchLine className="text-3xl text-sky-500" />
                     </div>
-                    <div></div>
+                    <div>
+                        <button
+                            onClick={handleLogout}
+                            className="bg-sky-500 px-6 py-3 rounded-full border-4 hover:border-4 border-white hover:bg-transparent text-white font-bold transition-all ease-in-out duration-300 delay-75"
+                        >
+                            Logout
+                        </button>
+                    </div>
                 </div>
             </div>
 

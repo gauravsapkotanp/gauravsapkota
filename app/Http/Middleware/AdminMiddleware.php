@@ -18,8 +18,14 @@ class AdminMiddleware
     {
        if (Auth::check() && Auth::user()->role === 'Admin' && Auth::user()->status === 'active') {
             return $next($request);
-        } else {
-            return back();
+        } elseif (Auth::check() && Auth::user()->role === 'User' && Auth::user()->status === 'active') {
+            return redirect()->route('home');
+        } else{
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return back();
+       
         }
     }
 

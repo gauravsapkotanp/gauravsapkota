@@ -1,22 +1,21 @@
 <?php
 
 use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MovieController;
-use App\Http\Controllers\Admin\ProjectController;
-use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\KhaltiController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
+Route::middleware('guest')->group(function(){
 Route::get('/', [FrontendController::class, "main"])->name('main');
 Route::get('/getstarted', [FrontendController::class, "getstarted"])->name('getstarted');
 Route::post('/signup', [FrontendController::class, "signup"])->name('signup');
 Route::get('/signup/step2', [FrontendController::class, "signupstep2"])->name('signupstep2');
 Route::post('/signup/step3', [FrontendController::class, "signupstep3"])->name('signupstep3');
+
+});
+
 
 Route::middleware('auth')->group(function () {
     
