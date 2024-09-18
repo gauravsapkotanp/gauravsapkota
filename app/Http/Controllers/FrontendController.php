@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Visit;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
@@ -92,14 +93,18 @@ public function signupstep3(Request $request)
     $request->validate([
         'email' => 'required|email|unique:users,email', 
         'password' => 'required|min:6',
+        'name'=>'required',
     ]);
 
     $user = User::create([
         'email' => $request->input('email'),
-        'password' => Hash::make($request->input('password')),  
-        'status' => 'inactive',  
-        'role' => 'User',  
+        'password' => Hash::make($request->input('password')), 
+        'name' => $request->input('name'), 
+        
     ]);
+
+    Auth::login($user);
+
     return Inertia::render('SignUpStep3', [
         'email' => $request->input('email'),
     ]);
@@ -128,12 +133,28 @@ public function signupstep3(Request $request)
 
    public function choosepayment(Request $request)
 {
+
     $this->visits();
+    $user=Auth::user();
     $price = $request->input('price');
     return Inertia::render('ChoosePayment', [
-        'price' => $price,  
+        'price' => $price,
+        'user' => $user,  
     ]);
 }
+
+public function userupdate(Request $request)
+{
+
+    $this->visits();
+    $user=User::find($request->id);
+    $user->status=$request->status;
+    $user->days=$request->days;
+    $user->save();
+   return redirect()->route('home')->with('success', 'Payment successful. User status updated.');
+     
+}
+ 
  
 }
 

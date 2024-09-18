@@ -3,10 +3,9 @@ import React from "react";
 import { GrSecure } from "react-icons/gr";
 import CryptoJS from "crypto-js";
 
-const ChoosePayment = () => {
+const ChoosePayment = ({ user }) => {
     const { props } = usePage();
     const { price } = props;
-
     const generateUUID = () => {
         // Generate a UUID version 4
         return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
@@ -27,8 +26,8 @@ const ChoosePayment = () => {
             tax_amount: 0,
             product_service_charge: 0,
             product_delivery_charge: 0,
-            success_url: "http://127.0.0.1:8000/home",
-            failure_url: "http://127.0.0.1:8000/signup/planform",
+            success_url: "http://127.0.0.1:8000/payment/success",
+            failure_url: "http://127.0.0.1:8000/planform",
             signed_field_names: "total_amount,transaction_uuid,product_code",
         };
 
@@ -67,39 +66,6 @@ const ChoosePayment = () => {
         document.body.appendChild(form);
         form.submit();
     };
-    const initiateKhaltiPayment = async () => {
-        const csrfToken = document
-            .querySelector('meta[name="csrf-token"]')
-            .getAttribute("content");
-
-        const requestPayload = {
-            amount: price * 100,
-            product_identity: generateUUID(),
-            product_name: "Your Product Name",
-            product_url: "http://yourwebsite.com/product",
-        };
-
-        try {
-            const response = await fetch("/khalti/initiate", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRF-TOKEN": csrfToken,
-                },
-                body: JSON.stringify(requestPayload),
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                window.location.href = data.paymentUrl;
-            } else {
-                console.error("Error initiating Khalti payment:", data.message);
-            }
-        } catch (error) {
-            console.error("Network error initiating Khalti payment:", error);
-        }
-    };
 
     return (
         <>
@@ -116,14 +82,24 @@ const ChoosePayment = () => {
                                     />
                                 </div>
 
-                                <div className=" ">
-                                    <Link href={route("getstarted")}>
-                                        <button className="border-2  py-1.5 transition-all ease-in-out duration-300 delay-75  bg-sky-600 hover:border-sky-600 text-white px-7 rounded-full flex items-center justify-items-center gap-2">
-                                            <h1 className="text-white">
-                                                Login
-                                            </h1>
-                                        </button>
-                                    </Link>
+                                <div>
+                                    {user != null ? (
+                                        <Link href={route("dashboard")}>
+                                            <button className="border-2 py-1.5 transition-all ease-in-out duration-300 delay-75 bg-sky-600 hover:border-sky-600 text-white px-7 rounded-full flex items-center justify-items-center gap-2">
+                                                <h1 className="text-white">
+                                                    Sign Out
+                                                </h1>
+                                            </button>
+                                        </Link>
+                                    ) : (
+                                        <Link href={route("login")}>
+                                            <button className="border-2 py-1.5 transition-all ease-in-out duration-300 delay-75 bg-sky-600 hover:border-sky-600 text-white px-7 rounded-full flex items-center justify-items-center gap-2">
+                                                <h1 className="text-white">
+                                                    Login
+                                                </h1>
+                                            </button>
+                                        </Link>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -156,18 +132,6 @@ const ChoosePayment = () => {
                                     <img
                                         className=" object-cover h-full w-full  rounded-xl"
                                         src="/images/esewa.jpg"
-                                        alt=""
-                                    />
-                                </div>
-                            </div>
-                            <div className="pt-8">
-                                <div
-                                    onClick={initiateKhaltiPayment}
-                                    className="h-40 w-full object-cover rounded-xl hover:cursor-pointer"
-                                >
-                                    <img
-                                        className=" object-cover h-full w-full  rounded-xl"
-                                        src="/images/khalti.png"
                                         alt=""
                                     />
                                 </div>

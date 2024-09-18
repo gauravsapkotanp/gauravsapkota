@@ -36,7 +36,8 @@ class AuthenticatedSessionController extends Controller
         
         if ($request->user()->role == 'User' && $request->user()->status == 'active') {
             return redirect()->intended(route('home', absolute: false));
-        
+        }elseif ($request->user()->role == 'User' && $request->user()->status == 'inactive') {
+                return redirect()->intended(route('planform', absolute: false));
         } elseif ($request->user()->role == 'Admin' && $request->user()->status == 'active') {
             return redirect()->intended(route('dashboard', absolute: false));
         }

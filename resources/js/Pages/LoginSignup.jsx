@@ -1,8 +1,22 @@
 import Checkbox from "@/Components/Checkbox";
-import { Link } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
 import React from "react";
 
 const LoginSignup = () => {
+    const { data, setData, post, processing, errors } = useForm({
+        email: "",
+        password: "",
+    });
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (data.email === "" || data.password === "") {
+            alert("Both fields are required");
+        } else {
+            post(route("login"));
+        }
+    };
     return (
         <>
             <div className="relative">
@@ -30,23 +44,46 @@ const LoginSignup = () => {
                             Sign In
                         </h1>
                         <div className=" ">
-                            <form action="">
+                            {/* Form */}
+                            <form onSubmit={handleSubmit}>
                                 <div>
                                     <input
-                                        type="text"
+                                        type="email"
                                         placeholder="Email Address"
-                                        className="bg-gray-700 bg-opacity-35 w-96  text-white ring-0 focus:ring-0  focus:outline-none placeholder-gray-500 placeholder:text-start px-3 py-4 rounded-lg"
+                                        value={data.email}
+                                        onChange={(e) =>
+                                            setData("email", e.target.value)
+                                        }
+                                        className="bg-gray-700 bg-opacity-35 w-96 text-white ring-0 focus:ring-0 focus:outline-none placeholder-gray-500 placeholder:text-start px-3 py-4 rounded-lg"
                                     />
+                                    {errors.email && (
+                                        <div className="text-red-500 text-sm">
+                                            {errors.email}
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="py-8">
                                     <input
-                                        type="text"
+                                        type="password"
                                         placeholder="Password"
-                                        className="bg-gray-700 bg-opacity-35 w-96  text-white ring-0 focus:ring-0  focus:outline-none placeholder-gray-500 placeholder:text-start px-3 py-4 rounded-lg"
+                                        value={data.password}
+                                        onChange={(e) =>
+                                            setData("password", e.target.value)
+                                        }
+                                        className="bg-gray-700 bg-opacity-35 w-96 text-white ring-0 focus:ring-0 focus:outline-none placeholder-gray-500 placeholder:text-start px-3 py-4 rounded-lg"
                                     />
+                                    {errors.password && (
+                                        <div className="text-red-500 text-sm">
+                                            {errors.password}
+                                        </div>
+                                    )}
                                 </div>
-                                <button className="bg-indigo-500 px-8 py-3 w-full rounded-lg hover:bg-indigo-300 transition-all ease-in-out duration-300 delay-75 text-white font-bold">
-                                    Sign In
+                                <button
+                                    type="submit"
+                                    disabled={processing}
+                                    className="bg-indigo-500 px-8 py-3 w-full rounded-lg hover:bg-indigo-300 transition-all ease-in-out duration-300 delay-75 text-white font-bold"
+                                >
+                                    {processing ? "Signing In..." : "Sign In"}
                                 </button>
                                 <h1 className="uppercase text-center py-5 font-bold text-xl">
                                     OR
@@ -54,7 +91,7 @@ const LoginSignup = () => {
                                 <button className="bg-gray-500 px-8 py-3 w-full rounded-lg hover:bg-gray-600 transition-all ease-in-out duration-300 delay-75 text-white font-bold">
                                     Use a Sign-In Code
                                 </button>
-                                <h1 className="  text-center py-2 font-bold text-sm hover:underline hover:cursor-pointer">
+                                <h1 className="text-center py-2 font-bold text-sm hover:underline hover:cursor-pointer">
                                     Forgot Password?
                                 </h1>
                             </form>

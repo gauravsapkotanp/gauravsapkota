@@ -10,29 +10,27 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\KhaltiController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use Inertia\Inertia;
 
 Route::get('/', [FrontendController::class, "main"])->name('main');
 Route::get('/getstarted', [FrontendController::class, "getstarted"])->name('getstarted');
 Route::post('/signup', [FrontendController::class, "signup"])->name('signup');
 Route::get('/signup/step2', [FrontendController::class, "signupstep2"])->name('signupstep2');
 Route::post('/signup/step3', [FrontendController::class, "signupstep3"])->name('signupstep3');
-Route::get('/signup/planform', [FrontendController::class, "planform"])->name('planform');
-Route::get('/choosepaymentmethod', [FrontendController::class, "choosepayment"])->name('choosepayment');
 
- 
- 
+Route::middleware('auth')->group(function () {
+    
+    Route::get('/planform', [FrontendController::class, "planform"])->name('planform');
+    Route::get('/choosepaymentmethod', [FrontendController::class, "choosepayment"])->name('choosepayment');
+    Route::get('/home', [FrontendController::class, "home"])->name('home');
+    Route::get('/movie/{id}', [FrontendController::class, "watchmovie"])->name('watchmovie.show');
 
-Route::post('/khalti/initiate', [KhaltiController::class, 'initiatePayment'])->name('khalti.initiate');
-
-Route::middleware('user')->group(function () {
-   Route::get('/home', [FrontendController::class, "home"])->name('home');
-   Route::get('/movie/{id}', [FrontendController::class, "watchmovie"])->name('watchmovie.show');
+    Route::get('/user/update', [FrontendController::class, "userupdate"])->name('userupdate');
+   Route::get('/payment/success', function () {
+    return redirect()->route('userupdate', ['id' => auth()->id(), 'status' => 'active', 'days' => '30']);
 });
-
-
-
-Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
+ 
+Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -54,8 +52,8 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
     Route::get('/movies/edit/{movie}', [MovieController::class, 'edit'])->name('movies.edit');
     Route::post('/movies/update/{movie}', [MovieController::class, 'update'])->name('movies.update');
     Route::get('/movies/delete/{movie}', [MovieController::class, 'delete'])->name('movies.delete');
+});
 
- 
 });
 
 require __DIR__ . '/auth.php';

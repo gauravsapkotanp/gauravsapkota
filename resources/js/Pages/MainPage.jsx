@@ -1,5 +1,7 @@
-import { useForm } from "@inertiajs/react";
+import Header from "@/Components/Frontend/header";
+import { Link, useForm } from "@inertiajs/react";
 import React from "react";
+import { route } from "ziggy-js";
 
 const MainPage = () => {
     const { data, setData, post } = useForm({
@@ -12,7 +14,7 @@ const MainPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("signup"), { email: data.email }); // Send email to signup page
+        post(route("signup"), { email: data.email });
     };
 
     return (
@@ -23,6 +25,26 @@ const MainPage = () => {
                     src="/images/netflixbg.jpg"
                     alt=""
                 />
+                <div className="absolute inset-0 z-10  px-96 py-6">
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <img
+                                className="h-full w-48"
+                                src="/images/logo.png"
+                                alt=""
+                            />
+                        </div>
+                        <div>
+                            <Link
+                                href={route("getstarted")}
+                                className="bg-indigo-500 text-2xl px-8 py-2  rounded-full hover:bg-indigo-300 transition-all ease-in-out duration-300 delay-75 text-white font-bold"
+                            >
+                                Login
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-55">
                     <div className="text-center">
                         <h1 className="text-6xl font-bold text-white tracking-wider">

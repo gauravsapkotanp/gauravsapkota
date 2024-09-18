@@ -2,18 +2,17 @@ import { Link, useForm, usePage } from "@inertiajs/react";
 import React from "react";
 
 const SignUpStep2 = () => {
-    // Get email from previous page (MainPage)
-    const { email } = usePage().props;
+    const { email, auth } = usePage().props;
 
-    // Handle form submission
     const { data, setData, post } = useForm({
-        email: email || "", // Set email from props or fallback to an empty string
+        email: email || "",
         password: "",
+        name: "",
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("signupstep3")); // Submit the form to signup/step3
+        post(route("signupstep3"));
     };
 
     return (
@@ -67,22 +66,34 @@ const SignUpStep2 = () => {
                                 <input
                                     type="email"
                                     placeholder="Email Address"
-                                    value={data.email} // Set the email from data
+                                    value={data.email}
                                     onChange={(e) =>
                                         setData("email", e.target.value)
-                                    } // Update email if needed
+                                    }
                                     className="bg-white w-full text-black ring-0 focus:ring-0 focus:outline-none placeholder-gray-500 px-3 py-5 rounded-lg"
-                                    disabled // Disable the email field
+                                    disabled
+                                />
+                            </div>
+                            <div className="pt-8">
+                                <input
+                                    type="text"
+                                    placeholder="UserName"
+                                    value={data.name}
+                                    onChange={(e) =>
+                                        setData("name", e.target.value)
+                                    }
+                                    className="bg-white w-full text-black ring-0 focus:ring-0 focus:outline-none placeholder-gray-500 px-3 py-5 rounded-lg"
+                                    required
                                 />
                             </div>
                             <div className="py-8">
                                 <input
                                     type="password"
                                     placeholder="Password"
-                                    value={data.password} // Bind the password to the state
+                                    value={data.password}
                                     onChange={(e) =>
                                         setData("password", e.target.value)
-                                    } // Update password state
+                                    }
                                     className="bg-white w-full text-black ring-0 focus:ring-0 focus:outline-none placeholder-gray-500 px-3 py-5 rounded-lg"
                                     required
                                 />
