@@ -8,6 +8,7 @@ use App\Models\Contact;
 use App\Models\Movies;
 use App\Models\Project;
 use App\Models\Testimonial;
+use App\Models\User;
 use App\Models\Visit;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -23,9 +24,9 @@ class DashboardController extends Controller
         $visits = Visit::where('visit_date', '>=', $date)->pluck('no_of_visits');
         $totalblogs = Blog::all()->count();
         $movies=Movies::all();
-        // $totalprojects = Project::all()->count();
-        // $totaltestimonials = Testimonial::all()->count();
-        // $totalmessages = Contact::all()->count();
+        $totalusers = User::where('role', 'User')->count();
+        $activeusers = User::where('role', 'User')->where('status', 'active')->count();
+        $totalinactiveusers = User::where('role', 'User')->where('status', 'inactive')->count() ;
 
 
         return Inertia::render('Dashboard', [
@@ -34,9 +35,9 @@ class DashboardController extends Controller
             'visits' => $visits,
             'totalblogs' => $totalblogs,
             'movies' => $movies,
-            // 'totalprojects' => $totalprojects,
-            // 'totaltestimonials' => $totaltestimonials,
-            // 'totalmessages' => $totalmessages,
+            'totalusers' => $totalusers,
+            'activeusers' => $activeusers,
+            'inactiveusers' => $totalinactiveusers,
         ]);
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MovieController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,14 @@ Route::prefix('admin')->middleware(['admin','auth'])->group(function () {
     Route::get('/movies/edit/{movie}', [MovieController::class, 'edit'])->name('movies.edit');
     Route::post('/movies/update/{movie}', [MovieController::class, 'update'])->name('movies.update');
     Route::get('/movies/delete/{movie}', [MovieController::class, 'delete'])->name('movies.delete');
+
+      //users
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+    Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
+    Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
+    Route::post('/users/update/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::get('/users/delete/{user}', [UserController::class, 'delete'])->name('users.delete');
 });
 
 });

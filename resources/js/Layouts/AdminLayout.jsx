@@ -73,21 +73,7 @@ export default function AdminLayout({ children }) {
                                 </span>
                             </li>
                         </NavLink>
-                        {/* <NavLink
-                            href={route("blogs.index")}
-                            active={route().current("blogs.*")}
-                        >
-                            <li className="text-xl font-medium p-2 flex items-center gap-2">
-                                <RiDashboardFill className="text-2xl" />
-                                <span
-                                    className={`text-sm ${
-                                        isCollapsed ? "hidden" : "block"
-                                    }`}
-                                >
-                                    Blogs
-                                </span>
-                            </li>
-                        </NavLink> */}
+
                         <NavLink
                             href={route("movies.index")}
                             active={route().current("movies.*")}
@@ -103,7 +89,10 @@ export default function AdminLayout({ children }) {
                                 </span>
                             </li>
                         </NavLink>
-                        <NavLink>
+                        <NavLink
+                            href={route("users.index")}
+                            active={route().current("users.*")}
+                        >
                             <li className="text-xl font-medium p-2 flex items-center gap-2">
                                 <FaUserSecret className="text-2xl" />
                                 <span

@@ -1,4 +1,3 @@
-import Header from "@/Components/Frontend/header";
 import { Link, useForm } from "@inertiajs/react";
 import React from "react";
 import { route } from "ziggy-js";
