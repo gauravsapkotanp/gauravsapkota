@@ -127,7 +127,13 @@ const Header = ({ movies }) => {
                             )}
                         </div>
                         {searchText && (
-                            <div className="absolute p-4 rounded-b-2xl w-full backdrop-blur-3xl bg-black bg-opacity-70">
+                            <div
+                                className={`absolute p-4 rounded-b-2xl w-full backdrop-blur-3xl bg-black bg-opacity-70 ${
+                                    filteredMovies.length > 5
+                                        ? "max-h-[430px] overflow-y-scroll"
+                                        : ""
+                                }`}
+                            >
                                 {filteredMovies.length > 0 ? (
                                     <div className="grid grid-cols-1 gap-5">
                                         {filteredMovies.map((movie) => (
@@ -135,9 +141,9 @@ const Header = ({ movies }) => {
                                                 key={movie.id}
                                                 className="flex gap-5 items-center group hover:cursor-pointer"
                                             >
-                                                <div className="h-16 w-36 object-cover rounded-3xl">
+                                                <div className="h-16 w-36 object-cover rounded-xl">
                                                     <img
-                                                        className=" h-full w-full object-cover rounded-3xl scale-100 group-hover:scale-105 transition-all ease-in-out duration-500"
+                                                        className="h-full w-full object-cover rounded-xl scale-100 group-hover:scale-105 transition-all ease-in-out duration-500"
                                                         src={`/img/movies/${movie.thumbnail}`}
                                                         alt={movie.title}
                                                     />
