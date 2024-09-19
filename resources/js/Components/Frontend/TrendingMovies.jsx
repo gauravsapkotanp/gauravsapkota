@@ -60,8 +60,11 @@ const TrendingMovies = ({ movies }) => {
             </div>
             <div className="grid grid-cols-1 gap-y-4">
                 {filteredMovies.map((movie, index) => (
-                    <Link href={route("watchmovie.show", { id: movie.id })}>
-                        <div key={index} className="relative">
+                    <Link
+                        href={route("watchmovie.show", { id: movie.id })}
+                        key={index}
+                    >
+                        <div className="relative">
                             <div className="w-full h-32 object-cover overflow-hidden rounded-xl">
                                 <img
                                     className="w-full h-32 object-cover rounded-xl scale-100 hover:scale-105 transition-transform duration-500 ease-in-out"

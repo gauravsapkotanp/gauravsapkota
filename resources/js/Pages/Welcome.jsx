@@ -15,7 +15,7 @@ export default function Welcome({ movies }) {
     return (
         <>
             <div className="bg-[#181818] ">
-                <Header />
+                <Header movies={movies} />
                 <div className="-mt-24">
                     <NavSwiper movies={movies} />
                 </div>
