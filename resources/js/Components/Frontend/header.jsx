@@ -72,24 +72,25 @@ const Header = ({ movies }) => {
     const handleSearch = (e) => {
         const searchTerm = e.target.value;
         setSearchText(searchTerm);
-        setIsSearching(true); // Set searching state to true
+        setIsSearching(true);
 
-        console.log("Movies List:", movies); // Log the movies data
-        console.log("Search Term:", searchTerm); // Log the search term
+        console.log("Movies List:", movies);
+        console.log("Search Term:", searchTerm);
 
         if (searchTerm.trim() === "") {
             setFilteredMovies([]);
-            setIsSearching(false); // Reset searching state when no input
+            setIsSearching(false);
         } else {
             setTimeout(() => {
                 // Simulate search delay
-                const results = binarySearch(movies, searchTerm);
+                const results = movies.filter((movie) =>
+                    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+                );
                 setFilteredMovies(results);
-                setIsSearching(false); // Set searching state to false when search is done
-            }, 500); // Optional delay for smoother UX
+                setIsSearching(false);
+            }, 500);
         }
     };
-
     return (
         <header className="relative z-20">
             <div className="w-full p-4 px-16">
@@ -134,7 +135,7 @@ const Header = ({ movies }) => {
                                                 key={movie.id}
                                                 className="flex gap-5 items-center group hover:cursor-pointer"
                                             >
-                                                <div className="h-24 w-36 object-cover rounded-3xl">
+                                                <div className="h-16 w-36 object-cover rounded-3xl">
                                                     <img
                                                         className=" h-full w-full object-cover rounded-3xl scale-100 group-hover:scale-105 transition-all ease-in-out duration-500"
                                                         src={`/img/movies/${movie.thumbnail}`}
