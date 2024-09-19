@@ -30,6 +30,7 @@ const countMoviesByType = (movies, type) => {
 
 export default function Dashboard({
     movies,
+    totalmovies,
     visits,
     visitdate,
     totalvisits,

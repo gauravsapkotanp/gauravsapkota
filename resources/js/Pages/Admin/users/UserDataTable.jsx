@@ -65,30 +65,6 @@ const UserDataTable = ({
         doc.save("data.pdf");
     };
 
-    // const stripHtmlTags = (str) => {
-    //     const div = document.createElement("div");
-    //     div.innerHTML = str;
-    //     return div.textContent || div.innerText || "";
-    // };
-
-    // const renderField = (column, item) => {
-    //     if (["images", "thumbnail"].includes(column.key) && item[column.key]) {
-    //         if (customRenderFunction) {
-    //             return customRenderFunction(item);
-    //         } else {
-    //             return (
-    //                 <img
-    //                     className="w-36 mx-auto rounded-xl"
-    //                     src={item[column.key]}
-    //                     alt=""
-    //                 />
-    //             );
-    //         }
-    //     } else {
-    //         return <div>{stripHtmlTags(item[column.key].toString())}</div>;
-    //     }
-    // };
-
     useEffect(() => {
         const startEntry = currentPage * itemsPerPage + 1;
         const endEntry = Math.min(
@@ -158,9 +134,6 @@ const UserDataTable = ({
                                     {column.label}
                                 </th>
                             ))}
-                            <th className="font-extrabold py-2 border-b border-t border-gray-300 px-2 text-black">
-                                Action
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -179,7 +152,7 @@ const UserDataTable = ({
                                             : item[column.key]}
                                     </td>
                                 ))}
-                                <td className="py-2 border-t border-b border-gray-300 px-2 text-black">
+                                {/* <td className="py-2 border-t border-b border-gray-300 px-2 text-black">
                                     <div className="flex items-center justify-center gap-1">
                                         {actions.map((action, idx) => (
                                             <React.Fragment key={idx}>
@@ -187,7 +160,7 @@ const UserDataTable = ({
                                             </React.Fragment>
                                         ))}
                                     </div>
-                                </td>
+                                </td> */}
                             </tr>
                         ))}
                     </tbody>
