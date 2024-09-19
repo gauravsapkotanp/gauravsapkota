@@ -106,13 +106,13 @@ const Header = ({ movies }) => {
                         </div>
                     </Link>
                     <div className="relative">
-                        <div className="flex items-center justify-between bg-black px-3 py-1.5 w-[500px] bg-opacity-60 rounded-full shadow-2xl hover:shadow-[0_0_22px_#000000] hover:bg-opacity-100 transition-all ease-in-out duration-300 delay-100">
-                            <button
+                        <div className="flex border-4 border-sky-600 items-center justify-between bg-black px-3 py-1.5 w-[500px] bg-opacity-60 rounded-full shadow-2xl hover:shadow-[0_0_22px_#000000] hover:bg-opacity-100 transition-all ease-in-out duration-300 delay-100">
+                            {/* <button
                                 onClick={toggleModal}
                                 className="text-gray-300 px-4 bg-gray-700 rounded-full py-1"
                             >
                                 Filter
-                            </button>
+                            </button> */}
                             <input
                                 type="text"
                                 placeholder="Search Movies..."
