@@ -46,7 +46,7 @@ const MainPage = () => {
                 </div>
 
                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-55">
-                    <div className="text-center">
+                    <div className="text-center z-50">
                         <h1 className="text-6xl font-bold text-white tracking-wider">
                             Unlimited movies, TV <br /> shows and more
                         </h1>
