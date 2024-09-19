@@ -137,23 +137,29 @@ const Header = ({ movies }) => {
                                 {filteredMovies.length > 0 ? (
                                     <div className="grid grid-cols-1 gap-5">
                                         {filteredMovies.map((movie) => (
-                                            <div
-                                                key={movie.id}
-                                                className="flex gap-5 items-center group hover:cursor-pointer"
+                                            <Link
+                                                href={route("watchmovie.show", {
+                                                    id: movie.id,
+                                                })}
                                             >
-                                                <div className="h-16 w-36 object-cover rounded-xl">
-                                                    <img
-                                                        className="h-full w-full object-cover rounded-xl scale-100 group-hover:scale-105 transition-all ease-in-out duration-500"
-                                                        src={`/img/movies/${movie.thumbnail}`}
-                                                        alt={movie.title}
-                                                    />
+                                                <div
+                                                    key={movie.id}
+                                                    className="flex gap-5 items-center group hover:cursor-pointer"
+                                                >
+                                                    <div className="h-16 w-36 object-cover rounded-xl">
+                                                        <img
+                                                            className="h-full w-full object-cover rounded-xl scale-100 group-hover:scale-105 transition-all ease-in-out duration-500"
+                                                            src={`/img/movies/${movie.thumbnail}`}
+                                                            alt={movie.title}
+                                                        />
+                                                    </div>
+                                                    <div>
+                                                        <h1 className="text-white group-hover:text-sky-500 font-bold tracking-wider text-2xl group-hover:underline transition-all ease-in-out duration-500">
+                                                            {movie.title}
+                                                        </h1>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <h1 className="text-white group-hover:text-sky-500 font-bold tracking-wider text-2xl group-hover:underline transition-all ease-in-out duration-500">
-                                                        {movie.title}
-                                                    </h1>
-                                                </div>
-                                            </div>
+                                            </Link>
                                         ))}
                                     </div>
                                 ) : (
