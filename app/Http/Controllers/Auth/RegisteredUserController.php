@@ -35,6 +35,7 @@ class RegisteredUserController extends Controller
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+        //bcrypt password Algorithm
         $password = $request->password;
         $cost = 12; // Cost factor for bcrypt (can be adjusted)
 

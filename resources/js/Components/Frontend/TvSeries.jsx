@@ -32,7 +32,7 @@ const merge = (left, right, compareFn) => {
 
 const filterMoviesByViews = (movies) => {
     // Filter movies to include only those with type "TV Series"
-    const tvSeriesMovies = movies.filter((movie) => movie.type === "TV Series");
+    const tvSeriesMovies = movies.filter((movie) => movie.type === "TV Show");
 
     // Comparator function for sorting by views
     const compareMoviesByViews = (a, b) => {
@@ -50,7 +50,7 @@ const filterMoviesByViews = (movies) => {
 const TvSeries = ({ movies }) => {
     const filteredMovies = filterMoviesByViews(movies);
 
-    if (filteredMovies.length === 0) return null;
+    // if (filteredMovies.length === 0) return null;
     return (
         <>
             <div className="w-full p-4 px-32 py-12">

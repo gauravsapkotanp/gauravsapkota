@@ -14,7 +14,6 @@ Route::get('/getstarted', [FrontendController::class, "getstarted"])->name('gets
 Route::post('/signup', [FrontendController::class, "signup"])->name('signup');
 Route::get('/signup/step2', [FrontendController::class, "signupstep2"])->name('signupstep2');
 Route::post('/signup/step3', [FrontendController::class, "signupstep3"])->name('signupstep3');
-
 });
 
 
